@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>요한계시록에 폭싹 빠졌수다</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: one link for the whole series — cover (progress + day list) and one view per day, routed by #dayN.
+   Palette: Seongeun Church homepage sky blue on light grey, iOS-style grouped white cards. */
+:root{
+  color-scheme:light;
+  --bg:#F5F6F8; --card:#FFFFFF; --ink:#212121; --sub:#666666; --hair:#E4E7EC; --fill:#EAEEF3;
+  --brand:#267CB9; --brand-ink:#1D6AA5; --brand-soft:#E0E7F0; --brand-tint:#EFF3F8; --brand-light:#7DB6DE;
+  --logo-red:#E5463F;
+  --f-body:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  --f-verse:"Gowun Batang","AppleMyungjo","Noto Serif KR",serif;
+  --c:var(--brand); --ci:var(--brand-ink); --cl:var(--brand-light);
+}
+html{font-size:112.5%;scroll-behavior:smooth}
+html.fs-l{font-size:137.5%}
+html.fs-xl{font-size:165%}
+html.fs-xl .icon{width:4rem;height:4rem}
+html.fs-xl .icon b{font-size:1.7rem}
+html.fs-xl .ans{padding-left:1.1rem}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:rgba(245,246,248,.94)}
+.wrap{max-width:44rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.card{background:var(--card);border-radius:14px}
+a{color:inherit}
+
+/* top utility */
+.home{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .85rem;border-radius:999px;background:var(--card);border:1px solid var(--hair);color:var(--brand-ink);font-size:.85rem;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.home svg{width:1.05em;height:1.05em;flex:none}
+.home:active{background:var(--brand-tint)}
+.home:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.foothome{display:flex;justify-content:flex-end;padding-block:.4rem 1rem}
+
+.util{display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding-block:.8rem .2rem}
+.util .brand{font-size:.82rem;font-weight:700;color:var(--brand-ink);letter-spacing:.02em}
+.seg{display:inline-flex;background:var(--fill);border-radius:9px;padding:2px;gap:2px}
+.seg button{font-family:var(--f-body);border:0;background:transparent;color:var(--ink);border-radius:7px;min-width:2.3rem;height:1.9rem;cursor:pointer;font-weight:700;line-height:1}
+.seg button[aria-pressed="true"]{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.04)}
+.seg button:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+.seg button:nth-child(1){font-size:.78rem}.seg button:nth-child(2){font-size:.95rem}.seg button:nth-child(3){font-size:1.12rem}
+
+/* ---------- Home ---------- */
+.homehead{display:grid;gap:1rem;padding-block:.6rem 1.2rem}
+.cover{position:relative;overflow:hidden;border-radius:20px;padding:1.6rem 1.4rem 1.5rem;background:
+  radial-gradient(70% 90% at 100% 0%,rgba(125,182,222,.55),transparent 60%),
+  radial-gradient(60% 70% at 85% 100%,rgba(38,124,185,.25),transparent 65%),
+  linear-gradient(160deg,#FFFFFF 0%,#EEF4FA 100%);display:grid;gap:.5rem}
+.kicker{font-size:.82rem;font-weight:700;color:var(--brand-ink)}
+.series{font-size:clamp(2rem,8vw,2.7rem);font-weight:800;line-height:1.18;letter-spacing:-.04em;color:var(--ink)}
+.subtitle{font-size:1.15rem;font-weight:700;color:var(--brand)}
+.cover .intro{margin-top:.4rem;color:var(--sub);font-size:.95rem;max-width:30rem}
+.progress{padding:1rem 1.1rem;display:grid;gap:.55rem}
+.ptop{display:flex;justify-content:space-between;gap:.5rem;font-size:.92rem}
+.ptop span{color:var(--sub);font-size:.85rem}
+.segs{display:grid;grid-template-columns:repeat(22,1fr);gap:3px}
+.segs i{height:.55rem;border-radius:3px;background:var(--fill)}
+.segs i.on{background:var(--brand)}
+.pscale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--sub)}
+.homemain{display:grid;gap:1.6rem;padding-block:.4rem 2.6rem}
+.feature{display:grid;gap:.35rem;text-decoration:none;color:#fff;border-radius:18px;padding:1.3rem 1.3rem 1.2rem;background:linear-gradient(145deg,var(--brand) 0%,#3F95CF 100%);box-shadow:0 10px 24px rgba(38,124,185,.25)}
+.feature .ftag{font-size:.78rem;font-weight:700;opacity:.9}
+.feature .ftitle{font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+.feature .fsum{font-size:.95rem;opacity:.93;line-height:1.6}
+.feature .fgo{font-size:.9rem;font-weight:700;margin-top:.35rem}
+.feature:focus-visible{outline:3px solid var(--brand-soft);outline-offset:2px}
+.listh{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;padding:0 .25rem .55rem}
+.list{background:var(--card);border-radius:14px;overflow:hidden}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:center;padding:.85rem 1rem;text-decoration:none;color:var(--ink)}
+.row+.row{border-top:.5px solid var(--hair)}
+.row:hover{background:#FAFBFC}
+.row:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+.mini{width:3rem;height:3rem;border-radius:22%;background:linear-gradient(145deg,var(--cl),var(--c));color:#fff;display:grid;place-items:center;align-content:center;line-height:1;text-align:center}
+.mini b{font-size:1.25rem;font-weight:800}
+.mini small{font-size:.6rem;font-weight:700}
+.rowtext{display:grid;min-width:0}
+.rowtext b{font-size:1rem;font-weight:700;line-height:1.4}
+.rowtext small{font-size:.8rem;color:var(--sub)}
+.rsum{font-size:.85rem;color:var(--sub);line-height:1.5;margin-top:.2rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.new{font-style:normal;font-size:.65rem;font-weight:800;color:#fff;background:var(--logo-red);border-radius:5px;padding:.08rem .35rem;margin-left:.4rem;vertical-align:.15em}
+.chev{width:.9rem;height:.9rem;color:#C4C4C7;flex:none}
+
+/* ---------- Day view ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(245,246,248,.88);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:.5px solid rgba(60,60,67,.18)}
+.barrow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-block:.45rem .2rem}
+.back{color:var(--brand);text-decoration:none;font-weight:600;font-size:.98rem;justify-self:start;padding:.2rem 0}
+.back:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+.bartitle{font-weight:700;font-size:.95rem}
+.toggle-all{justify-self:end;font-family:var(--f-body);font-size:.88rem;font-weight:600;color:var(--brand);background:transparent;border:0;cursor:pointer;padding:.2rem 0}
+.chips{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;padding-block:.35rem .55rem}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;font-family:var(--f-body);font-size:.84rem;font-weight:600;color:var(--ci);background:var(--card);border:1px solid color-mix(in srgb,var(--c) 35%,var(--hair));border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+.chips button:hover,.chips button:focus-visible{background:var(--ci);color:#fff;outline:none}
+.dayhead{display:grid;gap:1rem;padding-block:1.1rem .4rem}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center}
+.icon{width:4.6rem;height:4.6rem;border-radius:22%;background:linear-gradient(145deg,var(--cl) 0%,var(--c) 100%);color:#fff;display:grid;place-items:center;text-align:center;line-height:1;box-shadow:0 6px 16px color-mix(in srgb,var(--c) 35%,transparent)}
+.icon b{display:block;font-size:2rem;font-weight:800}
+.icon span{display:block;font-size:.7rem;font-weight:700;margin-top:.15rem}
+.dtitle{font-size:clamp(1.45rem,5.6vw,1.9rem);font-weight:800;line-height:1.25;letter-spacing:-.03em}
+.meta{font-size:.88rem;color:var(--sub)}
+.dayhead .intro{font-size:.96rem;color:var(--sub)}
+.mapcard{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:.5rem 1.2rem;padding:1rem 1.1rem;align-items:center}
+.mapcard h2{font-size:1.02rem;font-weight:700}
+.mapcard .cap{font-size:.85rem;color:var(--sub);margin-top:.3rem}
+.legend{display:grid;gap:.45rem;margin-top:.8rem;font-size:.86rem}
+.legend:empty{display:none}
+.legend div{display:flex;align-items:center;gap:.55rem}
+.dot{width:.7rem;height:.7rem;border-radius:50%;flex:none}
+svg.map{width:100%;height:auto;display:block}
+.map .route{fill:none;stroke:#C7C7CC;stroke-width:2;stroke-dasharray:3 5}
+.map .past{fill:#C7C7CC}
+.map .lbl{fill:var(--sub);font-family:var(--f-body);font-size:12px}
+.map .lbl-today{font-size:14px;font-weight:700}
+@media (max-width:560px){.mapcard{grid-template-columns:1fr}}
+
+.daymain{padding-block:1.4rem 2.6rem;display:grid;gap:2.2rem}
+section{scroll-margin-top:6.4rem;display:grid;gap:.7rem}
+.sechead{display:grid;gap:.1rem;padding:0 .25rem}
+.secno{font-size:.82rem;color:var(--ci);font-weight:700}
+.sechead h2{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;line-height:1.3}
+
+.qas{background:var(--card);border-radius:14px;overflow:hidden}
+details.qa+details.qa{border-top:.5px solid var(--hair)}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:start;padding:.85rem 1rem}
+summary::-webkit-details-marker{display:none}
+summary:hover{background:#FAFBFC}
+summary:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+.qn{font-weight:800;font-size:.8rem;color:#fff;background:var(--ci);border-radius:7px;min-width:2.5rem;text-align:center;padding:.14rem .35rem;margin-top:.2rem}
+.qt{font-weight:700;font-size:1rem;line-height:1.55}
+summary .chev{margin-top:.4rem;transition:transform .2s}
+details[open] summary .chev{transform:rotate(90deg);color:var(--c)}
+.ans{padding:0 1.1rem 1.15rem 4.25rem;display:grid;gap:.6rem;font-size:.97rem}
+@media (max-width:480px){.ans{padding-left:1.1rem}}
+blockquote{margin:.1rem 0;padding:.75rem .95rem;background:color-mix(in srgb,var(--c) 9%,#fff);border-radius:10px;font-family:var(--f-verse);font-size:1rem;line-height:1.7}
+blockquote cite{display:block;font-family:var(--f-body);font-style:normal;font-size:.78rem;color:var(--ci);font-weight:700;margin-top:.3rem}
+.ref{font-size:.82em;color:var(--sub);white-space:nowrap}
+.dots{margin:0;padding:0;list-style:none;display:grid;gap:.35rem}
+.dots li{padding-left:1rem;position:relative}
+.dots li::before{content:"";position:absolute;left:.1rem;top:.72em;width:.38rem;height:.38rem;border-radius:50%;background:var(--c)}
+.pairs{display:grid;margin:.1rem 0;padding:0;list-style:none;background:var(--bg);border-radius:12px;overflow:hidden}
+.pairs li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:.7rem;padding:.6rem .8rem;font-size:.93rem}
+.pairs li+li{border-top:.5px solid var(--hair)}
+.pairs li b{font-weight:700;color:var(--ci)}
+@media (max-width:420px){.pairs li{grid-template-columns:1fr;gap:.1rem}}
+.nums{display:grid;gap:.5rem;margin:.1rem 0;padding:0;list-style:none;counter-reset:t}
+.nums li{display:grid;grid-template-columns:1.9rem 1fr;gap:.5rem;align-items:start}
+.nums li::before{counter-increment:t;content:counter(t);font-weight:800;width:1.65rem;height:1.65rem;border-radius:50%;display:grid;place-items:center;background:var(--ci);color:#fff;font-size:.8rem;margin-top:.15rem}
+.sharebox{background:var(--brand-tint);border-radius:12px;padding:.8rem .95rem;display:grid;gap:.25rem}
+.sharebox span{font-size:.78rem;font-weight:800;color:var(--brand-ink)}
+.waters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin:.1rem 0}
+.w{background:var(--bg);border-radius:12px;padding:.75rem;min-width:0}
+.w i{display:inline-block;font-style:normal;font-size:.72rem;font-weight:700;color:#fff;background:var(--t);border-radius:999px;padding:.08rem .55rem}
+.w b{display:block;font-size:.92rem;margin-top:.4rem}
+.w span{display:block;font-size:.78rem;color:var(--sub);line-height:1.5}
+.w strong{display:block;font-size:.85rem;margin-top:.4rem;color:var(--t)}
+@media (max-width:480px){.waters{grid-template-columns:1fr}}
+.contrast{width:100%;border-collapse:collapse;font-size:.92rem;margin:.1rem 0;background:var(--bg);border-radius:12px;overflow:hidden}
+.contrast th{text-align:left;font-size:.75rem;color:var(--sub);font-weight:500;padding:.5rem .75rem}
+.contrast td{padding:.55rem .75rem;border-top:.5px solid var(--hair)}
+.contrast td:last-child{font-weight:700;color:var(--ci)}
+.flow{display:flex;align-items:stretch;gap:.35rem;margin:.1rem 0}
+.flow div{flex:1;text-align:center;background:var(--bg);border-radius:12px;padding:.65rem .3rem}
+.flow b{display:block;font-size:1.15rem;font-weight:800;color:var(--ci)}
+.flow span{font-size:.75rem;color:var(--sub)}
+.flow i{align-self:center;font-style:normal;color:#C4C4C7;font-weight:700}
+
+.closing{background:radial-gradient(80% 100% at 100% 0%,rgba(125,182,222,.6),transparent 60%),linear-gradient(150deg,#1D6AA5 0%,#267CB9 55%,#3F95CF 100%);color:#fff;border-radius:20px;padding:1.5rem 1.4rem;display:grid;gap:.85rem;box-shadow:0 10px 26px rgba(38,124,185,.25)}
+.closing .tag{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.88)}
+.closing .verse{font-family:var(--f-verse);font-size:1.2rem;line-height:1.75;font-weight:700}
+.closing .verse cite{display:block;font-family:var(--f-body);font-style:normal;font-size:.8rem;color:rgba(255,255,255,.85);margin-top:.35rem;font-weight:600}
+.closing .sum{font-size:.98rem;color:rgba(255,255,255,.95);border-top:.5px solid rgba(255,255,255,.35);padding-top:.85rem}
+.closing .sum+.sum{border-top:0;padding-top:0}
+.ask{display:grid;gap:.8rem;justify-items:center;text-align:center;color:var(--sub);font-size:.92rem}
+.ask strong{color:var(--ink)}
+.formbtn{display:inline-block;text-decoration:none;font-weight:700;font-size:1rem;color:#fff;background:var(--brand);padding:.8rem 1.8rem;border-radius:999px}
+.formbtn:hover{background:var(--brand-ink)}
+.formbtn:focus-visible{outline:3px solid var(--brand-soft);outline-offset:2px}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.pn{background:var(--card);border-radius:14px;padding:.8rem .95rem;text-decoration:none;color:var(--ink);display:grid;gap:.05rem;min-width:0}
+.pn.next{text-align:right}
+.pn small{color:var(--brand);font-weight:700;font-size:.8rem}
+.pn b{font-size:1rem}
+.pn span{font-size:.8rem;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-align:center}
+@media (prefers-reduced-motion:reduce){summary .chev{transition:none}html{scroll-behavior:auto}}
+</style>
+
+<div class="wrap util">
+  <a class="home" href="https://sungeunch.com/" target="_top" aria-label="성은교회 홈페이지로 돌아가기">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M3 10.5 12 3l9 7.5"/>
+<path d="M5 9.5V20h14V9.5"/>
+<path d="M10 20v-5.5h4V20"/>
+</svg>
+<span>성은교회 홈페이지</span>
+</a>
+  <div class="seg" role="group" aria-label="글씨 크기">
+    <button type="button" id="fs-m" data-fs="" aria-pressed="true" aria-label="글씨 보통">가</button>
+    <button type="button" id="fs-l" data-fs="fs-l" aria-pressed="false" aria-label="글씨 크게">가</button>
+    <button type="button" id="fs-xl" data-fs="fs-xl" aria-pressed="false" aria-label="글씨 아주 크게">가</button>
+  </div>
+</div>
+
+<div class="view" id="view-home" data-view="home">
+<header class="wrap homehead">
+  <div class="cover">
+    <p class="kicker">성경공부 프로젝트</p>
+    <h1 class="series">요한계시록에<br>폭싹 빠졌수다</h1>
+    <p class="subtitle">오늘의 궁금증</p>
+    <p class="intro">함께 읽은 본문에서 "이건 무슨 뜻이지?" 하고 궁금하셨던 것들을 날마다 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
+  </div>
+  <div class="card progress">
+    <div class="ptop"><b>요한계시록 22장 가운데 3장까지</b><span>4일째</span></div>
+    <div class="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+    <div class="pscale"><span>1장</span><span>22장</span></div>
+  </div>
+</header>
+<main class="wrap homemain">
+  <a class="feature" href="#day4" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
+    <span class="ftag">새로 올라온 궁금증</span>
+    <span class="ftitle">4일차 · 요한계시록 3장 7-22절</span>
+    <span class="fsum">닫힌 문 앞에서는 문을 열어 주시고, 내가 닫은 문 앞에서는 지금도 두드리시는 주님이 오늘 나와 함께 밥 먹자 하십니다.</span>
+    <span class="fgo">읽으러 가기 ›</span>
+  </a>
+  <section class="listsec">
+    <h2 class="listh">전체 궁금증</h2>
+    <div class="list"><a class="row" href="#day1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <span class="mini"><b>1</b><small>일차</small></span>
+  <span class="rowtext"><b>요한계시록 1장</b><small>11월 2일(월) · 질문 25개</small><span class="rsum">처음부터 끝까지 나를 붙드시는 주님이, 오늘도 나와 함께 계십니다.</span></span>
+  <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a><a class="row" href="#day2" style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">
+  <span class="mini"><b>2</b><small>일차</small></span>
+  <span class="rowtext"><b>요한계시록 2장 1-17절</b><small>11월 3일(화) · 질문 28개</small><span class="rsum">다 아시는 주님이, 오늘 나를 처음 사랑으로 다시 부르십니다.</span></span>
+  <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a><a class="row" href="#day3" style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">
+  <span class="mini"><b>3</b><small>일차</small></span>
+  <span class="rowtext"><b>요한계시록 2장 18절-3장 6절</b><small>11월 4일(수) · 질문 25개</small><span class="rsum">긴 밤에는 새벽 별로 오시고, 죽은 자리에서는 내 이름을 부르시는 주님이 오늘 나를 다시 살리십니다.</span></span>
+  <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a><a class="row" href="#day4" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
+  <span class="mini"><b>4</b><small>일차</small></span>
+  <span class="rowtext"><b>요한계시록 3장 7-22절<em class="new">NEW</em></b><small>11월 5일(목) · 질문 23개</small><span class="rsum">닫힌 문 앞에서는 문을 열어 주시고, 내가 닫은 문 앞에서는 지금도 두드리시는 주님이 오늘 나와 함께 밥 먹자 하십니다.</span></span>
+  <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a></div>
+  </section>
+  <div class="ask"><p>읽다가 더 궁금한 것이 있으면 <strong>구글폼 Q&amp;A</strong>에 남겨 주세요!</p>
+  <a class="formbtn" href="https://forms.gle/s3MssGb4nLTBFV3DA" target="_blank" rel="noopener">궁금한 것 남기기</a></div>
+</main>
+</div>
+<div class="view" id="view-day1" data-view="day1" hidden style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+<div class="bar">
+  <div class="wrap barrow">
+    <a class="back" href="#home">‹ 목록</a><span class="bartitle">1일차</span>
+    <button type="button" class="toggle-all">모두 펼치기</button>
+  </div>
+  <div class="wrap chips"><button type="button" data-go="d1-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">요한계시록은 어떤 책인가요?</button><button type="button" data-go="d1-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">&quot;반드시 속히 일어날 일&quot;</button><button type="button" data-go="d1-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">하나님과 성령님</button><button type="button" data-go="d1-s4" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">예수님은 어떤 분이신가요?</button><button type="button" data-go="d1-s5" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">교회에 대하여</button><button type="button" data-go="d1-s6" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">어떻게 읽어야 할까요?</button></div>
+</div>
+<div class="wrap dayhead">
+  <div class="hero">
+    <div class="icon"><div><b>1</b><span>일차</span></div></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 2일(월)</p><h1 class="dtitle">요한계시록 1장</h1><p class="meta">질문 25개</p></div>
+  </div>
+  <p class="intro">요한계시록 1장을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
+  <div class="card mapcard">
+  <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle cx="76" cy="241" r="6" fill="#FF3B30"/><text class="lbl" x="86" y="245" text-anchor="start" style="fill:#D70015">에베소</text><circle cx="51" cy="163" r="6" fill="#AF52DE"/><text class="lbl" x="61" y="167" text-anchor="start" style="fill:#8944AB">서머나</text><circle cx="56" cy="49" r="6" fill="#5856D6"/><text class="lbl" x="66" y="53" text-anchor="start" style="fill:#3634A3">버가모</text><circle cx="140" cy="82" r="6" fill="#FF2D55"/><text class="lbl" x="150" y="86" text-anchor="start" style="fill:#D30F45">두아디라</text><circle cx="166" cy="152" r="6" fill="#A2845E"/><text class="lbl" x="176" y="148" text-anchor="start" style="fill:#7F6545">사데</text><circle cx="227" cy="174" r="6" fill="#FF9500"/><text class="lbl" x="227" y="203" text-anchor="middle" style="fill:#C93400">빌라델비아</text><circle cx="303" cy="257" r="6" fill="#30B0C7"/><text class="lbl" x="290" y="246" text-anchor="end" style="fill:#0071A4">라오디게아</text></svg>
+  <div><h2>편지를 받을 일곱 교회</h2><p class="cap">1장 11절에 나오는 일곱 교회입니다. 점선은 편지가 돌아간 길이고, 2–3장에서 한 교회씩 읽어 갑니다.</p><div class="legend"></div></div>
+</div>
+</div>
+<main class="wrap daymain">
+<section id="d1-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">1</span><h2>요한계시록은 어떤 책인가요?</h2></div>
+  <div class="qas"><details class="qa" id="d1-q1">
+<summary><span class="qn">Q1</span><span class="qt">요한계시록은 무섭고 어려운 책 아닌가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>무서운 장면이 나오는 것은 맞습니다. 그런데 이 책의 첫 줄을 보세요.</p>
+<blockquote>예수 그리스도의 계시라<cite>1:1</cite></blockquote>
+<p>이 책의 주인공은 무서운 짐승이나 재앙이 아니라 예수님입니다.</p>
+<p>그리고 요한계시록은 무서워서 떨고 있던 교회들에게 "두려워하지 말라"<span class="ref">(1:17)</span>고 말해 주려고 보낸 편지입니다.</p>
+<p>겁주는 책이 아니라, 힘든 사람을 붙들어 주는 책입니다.</p></div></details><details class="qa" id="d1-q2">
+<summary><span class="qn">Q2</span><span class="qt">"계시"가 무슨 뜻이에요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>덮여 있던 것을 "열어서 보여 준다"는 뜻입니다.</p>
+<p>커튼을 걷으면 창밖이 보이는 것처럼, 하나님이 커튼을 걷고 "지금 세상 뒤에서 실제로 무슨 일이 일어나고 있는지" 보여 주신 것입니다.</p>
+<p>그러니 요한계시록은 감춰 두려고 쓴 비밀 책이 아니라, 보여 주려고 쓴 책입니다.</p></div></details><details class="qa" id="d1-q3">
+<summary><span class="qn">Q3</span><span class="qt">요한은 누구고, 왜 섬에 있었나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>교회는 오래전부터 이 요한을 예수님의 열두 제자 중 한 사람인 사도 요한으로 보아 왔습니다.</p>
+<p>9절을 보면 그 이유가 나옵니다. "하나님의 말씀과 예수를 증언하였음으로 말미암아 밧모라 하는 섬에 있었더니."</p>
+<p>예수님을 전했다는 이유로 밧모라는 작은 바위섬에 갇힌 것입니다.</p>
+<p>교회들은 바다 건너에서 고생하고 있는데, 요한은 갈 수가 없었습니다.</p>
+<p>바로 그런 요한에게 예수님이 찾아오셨습니다.</p></div></details><details class="qa" id="d1-q4">
+<summary><span class="qn">Q4</span><span class="qt">읽기만 해도 복이 있다고요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>3절입니다. "이 예언의 말씀을 읽는 자와 듣는 자와 그 가운데에 기록한 것을 지키는 자는 복이 있나니."</p>
+<p>그때는 성경책이 귀해서 한 사람이 교회 앞에서 소리 내어 읽고, 모두가 함께 들었습니다.</p>
+<p>그래서 "읽는 자"(한 사람)와 "듣는 자"(여럿)가 함께 나옵니다.</p>
+<p>요한계시록은 혼자 몰래 풀어 보는 책이 아니라, 교회가 함께 읽는 책입니다.</p>
+<p>그리고 복은 읽고 듣는 데서 끝나지 않고, "지키는" 데까지 갑니다. 이번 새벽 시리즈가 바로 그 자리입니다.</p></div></details><details class="qa" id="d1-q5">
+<summary><span class="qn">Q5</span><span class="qt">왜 이렇게 그림 같은 말(상징)로 썼나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>두 가지 이유가 있습니다.</p>
+<p>첫째, 구약의 다니엘서, 에스겔서도 이런 그림 언어로 하나님 나라를 말했습니다. 요한계시록은 그 말투를 이어받았습니다.</p>
+<p>둘째, 그림은 오래 기억에 남습니다. "예수님은 강하시다"는 말보다 "해처럼 빛나는 얼굴"<span class="ref">(1:16)</span>이 훨씬 마음에 남지요.</p>
+<p>그래서 그림 하나하나를 "정확히 무엇이냐" 따지기보다, "이 그림이 예수님에 대해 무엇을 말해 주나?"를 물으면 됩니다.</p></div></details></div>
+</section><section id="d1-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">2 · 1:1</span><h2>&quot;반드시 속히 일어날 일&quot;</h2></div>
+  <div class="qas"><details class="qa" id="d1-q6">
+<summary><span class="qn">Q6</span><span class="qt">"속히 일어날 일"이라는데, 벌써 2천 년이 지났잖아요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>많은 분들이 궁금해하는 질문입니다.</p>
+<p>1절의 이 말은 구약 다니엘서 2장에서 가져온 말입니다.</p>
+<p>다니엘은 "후일에", 곧 "먼 훗날에" 하나님이 한 나라를 세우실 것이라고 했습니다<span class="ref">(단 2:28, 44)</span>.</p>
+<p>그런데 요한은 그 "먼 훗날에"를 "속히"로 바꿔 썼습니다.</p>
+<p>왜요? 다니엘이 먼 훗날로 기다리던 하나님 나라가, 예수님이 오셔서 이미 시작되었기 때문입니다.</p>
+<p>그러니 "속히"는 "세상이 곧 끝난다"는 알람 시계가 아니라, "기다리던 하나님 나라가 벌써 시작됐다!"는 기쁜 소식입니다.</p></div></details><details class="qa" id="d1-q7">
+<summary><span class="qn">Q7</span><span class="qt">그럼 예수님은 언제 다시 오시나요? 날짜를 알 수 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>예수님은 분명히 다시 오십니다. 요한계시록 마지막 장에서 "내가 진실로 속히 오리라"<span class="ref">(22:20)</span> 하셨습니다.</p>
+<p>하지만 날짜는 아무도 모릅니다. 예수님이 직접 "그 날과 그 때는 아무도 모르나니"<span class="ref">(마 24:36)</span> 하셨습니다.</p>
+<p>그런데도 우리나라에서는 1969년, 1992년처럼 "그날이 언제다" 하고 날짜를 정해 사람들을 모은 일이 여러 번 있었고, 모두 틀렸습니다.</p>
+<p>누가 "재림 날짜를 안다"고 하면, 그 말은 성경과 다른 말입니다.</p>
+<p>우리가 할 일은 날짜를 맞히는 것이 아니라, 오늘 주님과 함께 사는 것입니다.</p></div></details><details class="qa" id="d1-q8">
+<summary><span class="qn">Q8</span><span class="qt">"어차피 이 세상은 불타 없어질 테니 천국만 기다리면 된다"는 생각은 왜 틀렸나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>6절을 보세요. 예수님이 "우리를 나라와 제사장으로 삼으신" 분이라고 합니다.</p>
+<p>"삼으실" 분이 아니라 이미 "삼으신" 분입니다.</p>
+<p>우리는 지금 이미 하나님 나라의 백성입니다.</p>
+<p>그러니 이 땅을 버리고 떠날 날만 기다리는 사람이 아니라, 오늘 여기서 하나님 나라 백성답게 사는 사람입니다.</p>
+<p>오늘 만나는 사람, 오늘 하는 일이 다 소중한 이유입니다.</p></div></details><details class="qa" id="d1-q9">
+<summary><span class="qn">Q9</span><span class="qt">제가 "제사장"이라고요? 목사님만 제사장 아닌가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>구약에서는 제사장만 하나님께 나아가 제사를 드릴 수 있었습니다.</p>
+<p>그런데 하나님은 처음부터 "너희가 내게 대하여 제사장 나라가 되며"<span class="ref">(출 19:6)</span> 하셨습니다. 백성 모두가 하나님께 가까이 나아오기를 원하셨습니다.</p>
+<p>예수님이 십자가에서 피를 흘리셔서 이 약속을 이루셨습니다<span class="ref">(1:5-6)</span>.</p>
+<p>이제는 누구든지 예수님을 믿으면 하나님께 직접 나아가 기도하고 예배할 수 있습니다.</p>
+<p>베드로도 성도들에게 "왕 같은 제사장들"이라고 했습니다<span class="ref">(벧전 2:9)</span>.</p>
+<p>제사장이라는 말은 "교회에서 높은 사람"이 아니라, "하나님께 가까이 가고, 사람들을 하나님께 데려가는 사람"이라는 뜻입니다.</p></div></details><details class="qa" id="d1-q10">
+<summary><span class="qn">Q10</span><span class="qt">힘들게 사는데 이게 하나님 나라라고요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>요한도 그랬습니다. 9절에서 요한은 자기를 "환난과 나라와 참음에 동참하는 자"라고 소개합니다.</p>
+<p>섬에 갇힌 사람이 "나는 하나님 나라 안에 있다"고 말합니다.</p>
+<p>고난이 있다고 하나님 나라가 없는 것이 아닙니다.</p>
+<p>하나님 나라는 지금은 고난과 함께 오고, 우리는 그 안에서 참고 견딥니다.</p>
+<p>그리고 예수님이 다시 오시는 날, 고난은 끝나고 하나님 나라만 남습니다.</p></div></details></div>
+</section><section id="d1-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">3</span><h2>하나님과 성령님</h2></div>
+  <div class="qas"><details class="qa" id="d1-q11">
+<summary><span class="qn">Q11</span><span class="qt">"이제도 계시고 전에도 계셨고 장차 오실 이"<span class="ref">(1:4)</span>는 순서가 좀 이상하지 않나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>맞습니다. 보통은 "전에, 지금, 앞으로" 순서로 말하지요.</p>
+<p>그런데 요한은 "이제도"(지금)를 맨 앞에 두었습니다.</p>
+<p>섬에 갇힌 요한, 고생하는 교회들에게 가장 필요한 말이 "하나님은 지금 여기 계신다"였기 때문입니다.</p>
+<p>옛날의 하나님만도, 언젠가의 하나님만도 아닙니다. 오늘 아침 나와 함께 계신 하나님입니다.</p></div></details><details class="qa" id="d1-q12">
+<summary><span class="qn">Q12</span><span class="qt">"보좌 앞에 있는 일곱 영"<span class="ref">(1:4)</span>은 누구인가요? 영이 일곱 개인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 4-5절을 보면 은혜와 평강이 세 분에게서 옵니다.</p>
+<p>"이제도 계시고…"(하나님), "일곱 영", 그리고 "예수 그리스도."</p>
+<p>하나님과 예수님 사이에 나오는 "일곱 영"은 성령님을 말합니다.</p>
+<p>"일곱"은 꽉 찬 수라서, 성령님이 온전하고 충분하게 일하신다는 뜻입니다.</p>
+<p>5장 6절은 이 일곱 영을 "온 땅에 보내심을 받은" 영이라고 합니다. 성령님은 온 세상 모든 교회에 함께하십니다.</p></div></details><details class="qa" id="d1-q13">
+<summary><span class="qn">Q13</span><span class="qt">요한계시록에는 왜 "7"이 이렇게 많이 나오나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>일곱 교회, 일곱 영, 일곱 촛대, 일곱 별… 1장에만도 여러 번 나옵니다.</p>
+<p>성경에서 7은 "꽉 찬 수, 완전한 수"입니다. 하나님이 일곱째 날에 창조를 마치시고 쉬셨지요<span class="ref">(창 2:2)</span>.</p>
+<p>그래서 "일곱 교회"는 그때 있던 교회 일곱 곳이면서, 동시에 "모든 교회"를 대표합니다.</p>
+<p>숫자를 계산하는 것보다, 숫자가 말하는 뜻을 보면 됩니다.</p></div></details><details class="qa" id="d1-q14">
+<summary><span class="qn">Q14</span><span class="qt">"알파와 오메가"<span class="ref">(1:8)</span>가 뭐예요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>요한계시록은 그리스어(헬라어)로 쓰였는데, 알파는 그 글자의 첫 글자, 오메가는 마지막 글자입니다.</p>
+<p>우리말로 하면 "ㄱ부터 ㅎ까지", "가부터 하까지"입니다.</p>
+<p>처음도 하나님, 끝도 하나님, 그 사이 모든 것도 하나님 손안에 있다는 뜻입니다.</p>
+<p>17절에서는 예수님도 똑같이 "나는 처음이요 마지막이니"라고 하십니다. 예수님이 하나님이시라는 말입니다.</p></div></details></div>
+</section><section id="d1-s4" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">4</span><h2>예수님은 어떤 분이신가요?</h2></div>
+  <div class="qas"><details class="qa" id="d1-q15">
+<summary><span class="qn">Q15</span><span class="qt">예수님을 "땅의 임금들의 머리"<span class="ref">(1:5)</span>라고 부른 것이 왜 대단한 일인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>그때 세상의 왕은 로마 황제였습니다. 황제는 자기를 신처럼 섬기라고 했고, 따르지 않으면 불이익을 당했습니다.</p>
+<p>그런 때에 "진짜 왕은 황제가 아니라 예수님이다"라고 말하는 것은 목숨을 건 고백이었습니다.</p>
+<p>오늘 나를 겁주는 "왕"이 무엇이든, 그보다 높은 분이 예수님이십니다.</p></div></details><details class="qa" id="d1-q16">
+<summary><span class="qn">Q16</span><span class="qt">"우리를 사랑하사 … 해방하시고"<span class="ref">(1:5)</span>에서 "사랑하사"가 특별하다면서요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>우리말 성경으로 읽으면 둘 다 지나간 일처럼 들립니다.</p>
+<p>그런데 원래 성경 말(헬라어)로 보면 다릅니다.</p>
+<p>"해방하시고"는 십자가에서 한 번에 끝난 일입니다.</p>
+<p>"사랑하사"는 지금도 계속되는 일입니다.</p>
+<p>그러니까 예수님은 "옛날에 한 번 사랑하셨던 분"이 아니라, "지금도 계속 나를 사랑하시는 분"입니다.</p></div></details><details class="qa" id="d1-q17">
+<summary><span class="qn">Q17</span><span class="qt">"구름을 타고 오시리라"<span class="ref">(1:7)</span>는 언제 일이에요? "찌른 자들"은 누구예요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>예수님이 다시 오시는 날을 말합니다. 그날에는 "각 사람의 눈이 그를" 봅니다. 몰래 오시는 것이 아니라 모두가 보게 됩니다.</p>
+<p>"찌른 자들"은 예수님을 십자가에 못 박고 창으로 찌른 사람들을 떠올리게 합니다<span class="ref">(요 19:37)</span>.</p>
+<p>더 넓게는 예수님을 거절한 모든 사람입니다. 그들도 그날에는 예수님이 참 왕이심을 보게 됩니다.</p>
+<p>다만 그날이 언제인지는 성경이 알려 주지 않습니다<span class="ref">(Q7 참고)</span>.</p></div></details><details class="qa" id="d1-q18">
+<summary><span class="qn">Q18</span><span class="qt">"주의 날"<span class="ref">(1:10)</span>은 무슨 날이에요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>예수님이 부활하신 날, 곧 일요일, 우리가 "주일"이라고 부르는 날로 봅니다.</p>
+<p>초대교회 성도들은 매주 첫날에 모여 예배했습니다<span class="ref">(행 20:7; 고전 16:2)</span>.</p>
+<p>요한은 섬에 갇혀 교회에 갈 수 없었지만, 주일에 홀로 예배하던 바로 그 자리에서 예수님을 만났습니다.</p>
+<p>주일 예배 자리, 그리고 이번 새벽 자리가 예수님을 만나는 자리입니다.</p></div></details><details class="qa" id="d1-q19">
+<summary><span class="qn">Q19</span><span class="qt">1장의 예수님 모습이 좀 무서워요. 정말 그렇게 생기셨나요?<span class="ref">(1:13-16)</span></span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>이것은 사진이 아니라 "그림 언어"입니다. 각 모습이 예수님이 어떤 분인지 알려 줍니다.</p>
+<ul class="pairs"><li><b>발에 끌리는 옷, 가슴의 금띠</b><span>왕이시고 제사장이신 분</span></li><li><b>눈같이 흰 머리</b><span>다니엘이 본 "옛적부터 항상 계신 이"<span class="ref">(단 7:9)</span>, 곧 영원하신 하나님</span></li><li><b>불꽃 같은 눈</b><span>모든 것을 꿰뚫어 보시는 분 (2장에서 "내가 안다"고 하시는 분입니다)</span></li><li><b>빛난 주석 같은 발</b><span>흔들리지 않는 강한 분</span></li><li><b>많은 물소리 같은 음성</b><span>모든 소리를 덮는 힘 있는 말씀</span></li><li><b>입에서 나오는 날선 검</b><span>하나님의 말씀<span class="ref">(히 4:12)</span></span></li><li><b>해처럼 빛나는 얼굴</b><span>영광의 주님</span></li></ul>
+<p>무섭게 생기셨다는 뜻이 아니라, 우리를 지키시기에 충분히 강하신 분이라는 뜻입니다.</p></div></details><details class="qa" id="d1-q20">
+<summary><span class="qn">Q20</span><span class="qt">요한은 왜 죽은 사람처럼 쓰러졌나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>하나님의 영광 앞에 서면 사람은 누구나 버틸 수 없습니다. 다니엘도 하나님이 보내신 이를 보고 얼굴을 땅에 대고 쓰러졌습니다<span class="ref">(단 10:9)</span>.</p>
+<p>그런데 17절이 정말 중요합니다. 예수님이 쓰러진 요한에게 "오른손을 내게 얹고" 말씀하십니다.</p>
+<blockquote>두려워하지 말라 나는 처음이요 마지막이니.</blockquote>
+<p>일곱 별(교회)을 붙들고 계신 바로 그 오른손으로, 쓰러진 요한을 일으키셨습니다.</p>
+<p>예수님의 강함은 우리를 겁주려는 것이 아니라, 우리를 일으키려는 것입니다.</p></div></details><details class="qa" id="d1-q21">
+<summary><span class="qn">Q21</span><span class="qt">"사망과 음부의 열쇠"<span class="ref">(1:18)</span>는 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>"음부"는 죽은 사람들이 가는 곳을 말합니다.</p>
+<p>열쇠를 가진 사람이 문을 열고 닫습니다. 그러니 "열쇠를 가졌다"는 말은 "그 문을 마음대로 할 권한이 있다"는 뜻입니다.</p>
+<p>예수님은 "내가 전에 죽었었노라 … 이제 세세토록 살아 있어" 하십니다. 죽음 속에 들어가셨다가 이기고 나오셨습니다.</p>
+<p>그래서 죽음도 이제 예수님 손안에 있습니다. 믿는 사람에게 죽음은 끝이 아닙니다.</p></div></details></div>
+</section><section id="d1-s5" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">5</span><h2>교회에 대하여</h2></div>
+  <div class="qas"><details class="qa" id="d1-q22">
+<summary><span class="qn">Q22</span><span class="qt">일곱 금 촛대와 일곱 별은 무엇인가요?<span class="ref">(1:20)</span></span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>예수님이 직접 풀어 주셨습니다. "일곱 촛대는 일곱 교회니라."</p>
+<p>촛대는 스스로 빛을 내지 못합니다. 기름을 부어야 빛이 납니다. 교회도 우리 힘으로 빛나지 않고, 교회 한가운데 계신 예수님 때문에 빛납니다.</p>
+<p>그리고 예수님은 그 촛대 "사이에"<span class="ref">(1:13)</span> 서 계십니다. 멀리 계신 것이 아니라 교회 한가운데 계십니다.</p>
+<p>"일곱 별은 일곱 교회의 사자"인데, "사자"는 "보냄 받은 자"라는 말입니다. 교회를 돌보는 천사로 보기도 하고, 교회 지도자로 보기도 합니다.</p>
+<p>어느 쪽이든 중요한 것은, 예수님이 그 별을 "오른손에" 꼭 붙잡고 계시다는 사실입니다<span class="ref">(1:16)</span>. 교회는 예수님 손안에 있습니다.</p></div></details><details class="qa" id="d1-q23">
+<summary><span class="qn">Q23</span><span class="qt">그때 교회가 일곱 개뿐이었나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 그 지역에는 골로새, 히에라볼리 같은 다른 교회들도 있었습니다.</p>
+<p>그런데 일곱 곳을 고르신 것은, 7이 "꽉 찬 수"이기 때문입니다<span class="ref">(Q13)</span>.</p>
+<p>일곱 교회는 실제로 있던 교회들이면서, 동시에 세상 모든 교회, 우리 성은교회를 대표합니다.</p>
+<p>그래서 편지마다 끝에 "성령이 교회들에게 하시는 말씀을 들을지어다"라고 합니다. 한 교회에 하신 말씀을 모든 교회가 들으라는 것입니다.</p></div></details><details class="qa" id="d1-q24">
+<summary><span class="qn">Q24</span><span class="qt">19절 "본 것과 지금 있는 일과 장차 될 일"로 요한계시록을 세 토막으로 나누던데요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>1장은 "본 것", 2-3장은 "지금 있는 일", 4장부터는 "먼 미래의 일"로 딱 잘라 나누는 해석이 있습니다.</p>
+<p>그렇게 나누면 4장부터는 우리와 상관없는 먼 미래 이야기가 되기 쉽습니다.</p>
+<p>그런데 요한계시록 안에는 이미 일어난 일(예수님의 십자가), 지금 일어나는 일, 앞으로 일어날 일이 섞여서 함께 나옵니다.</p>
+<p>그래서 19절은 "네가 본 것 전체를 다 기록하라"는 말로 읽는 것이 좋습니다.</p>
+<p>요한계시록은 처음부터 끝까지 "지금 우리"에게 주신 말씀입니다.</p></div></details></div>
+</section><section id="d1-s6" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">6</span><h2>어떻게 읽어야 할까요?</h2></div>
+  <div class="qas"><details class="qa" id="d1-q25">
+<summary><span class="qn">Q25</span><span class="qt">이단들이 요한계시록을 많이 쓰던데, 어떻게 읽어야 안전한가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>세 가지만 기억하세요.</p>
+<ol class="nums"><li><span>예수님 안경을 쓰세요. 장마다 "이 말씀에서 어린양 예수님은 어디에 계십니까?"를 물으세요. 답이 예수님이 아니라 어떤 사람이나 단체로 가면, 잘못 읽고 있는 것입니다.</span></li><li><span>날짜를 계산하지 마세요. 재림 날짜를 안다는 말은 성경과 다릅니다<span class="ref">(마 24:36)</span>.</span></li><li><span>혼자 몰래 풀지 마세요. 요한계시록은 교회가 함께 읽는 책입니다<span class="ref">(1:3)</span>. 궁금한 것은 교회에서 함께 묻고 나누면 됩니다.</span></li></ol></div></details></div>
+</section>
+<div class="closing"><span class="tag">오늘 1장의 한 줄 정리</span><p class="verse">"두려워하지 말라 나는 처음이요 마지막이니"<cite>1:17</cite></p><p class="sum">처음부터 끝까지 나를 붙드시는 주님이, 오늘도 나와 함께 계십니다.</p></div>
+<div class="ask"><p>더 궁금한 것이 있으면 <strong>구글폼 Q&amp;A</strong>에 남겨 주세요! 답변 드리겠습니다.</p>
+<a class="formbtn" href="https://forms.gle/s3MssGb4nLTBFV3DA" target="_blank" rel="noopener">궁금한 것 남기기</a></div>
+<nav class="pager" aria-label="다른 날"><span></span><a class="pn next" href="#day2"><small>다음 ›</small><b>2일차</b><span>요한계시록 2장 1-17절</span></a></nav>
+</main>
+</div>
+<div class="view" id="view-day2" data-view="day2" hidden style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">
+<div class="bar">
+  <div class="wrap barrow">
+    <a class="back" href="#home">‹ 목록</a><span class="bartitle">2일차</span>
+    <button type="button" class="toggle-all">모두 펼치기</button>
+  </div>
+  <div class="wrap chips"><button type="button" data-go="d2-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">편지를 읽는 방법</button><button type="button" data-go="d2-s2" style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">에베소 교회</button><button type="button" data-go="d2-s3" style="--c:#AF52DE;--ci:#8944AB;--cl:#DA8FFF">서머나 교회</button><button type="button" data-go="d2-s4" style="--c:#5856D6;--ci:#3634A3;--cl:#7D7AFF">버가모 교회</button><button type="button" data-go="d2-s5" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">오늘 우리에게</button></div>
+</div>
+<div class="wrap dayhead">
+  <div class="hero">
+    <div class="icon"><div><b>2</b><span>일차</span></div></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 3일(화)</p><h1 class="dtitle">요한계시록 2장 1-17절</h1><p class="meta">질문 28개</p></div>
+  </div>
+  <p class="intro">요한계시록 2장 1-17절을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
+  <div class="card mapcard">
+  <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle cx="76" cy="241" r="15" fill="#FF3B30" opacity=".18"/><circle cx="76" cy="241" r="7" fill="#FF3B30"/><text class="lbl lbl-today" x="86" y="245" text-anchor="start" style="fill:#D70015">에베소</text><circle cx="51" cy="163" r="15" fill="#AF52DE" opacity=".18"/><circle cx="51" cy="163" r="7" fill="#AF52DE"/><text class="lbl lbl-today" x="61" y="167" text-anchor="start" style="fill:#8944AB">서머나</text><circle cx="56" cy="49" r="15" fill="#5856D6" opacity=".18"/><circle cx="56" cy="49" r="7" fill="#5856D6"/><text class="lbl lbl-today" x="66" y="53" text-anchor="start" style="fill:#3634A3">버가모</text><circle class="past" cx="140" cy="82" r="5"/><text class="lbl" x="150" y="86" text-anchor="start">두아디라</text><circle class="past" cx="166" cy="152" r="5"/><text class="lbl" x="176" y="148" text-anchor="start">사데</text><circle class="past" cx="227" cy="174" r="5"/><text class="lbl" x="227" y="203" text-anchor="middle">빌라델비아</text><circle class="past" cx="303" cy="257" r="5"/><text class="lbl" x="290" y="246" text-anchor="end">라오디게아</text></svg>
+  <div><h2>오늘 읽은 교회: 에베소, 서머나, 버가모</h2><p class="cap">점선은 편지가 돌아간 길입니다. 에베소에서 시작해 라오디게아에서 끝납니다.</p><div class="legend"><div><span class="dot" style="background:#FF3B30"></span>에베소</div><div><span class="dot" style="background:#AF52DE"></span>서머나</div><div><span class="dot" style="background:#5856D6"></span>버가모</div><div><span class="dot" style="background:#C7C7CC"></span>다른 교회</div></div></div>
+</div>
+</div>
+<main class="wrap daymain">
+<section id="d2-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">1</span><h2>편지를 읽는 방법</h2></div>
+  <div class="qas"><details class="qa" id="d2-q1">
+<summary><span class="qn">Q1</span><span class="qt">2-3장의 일곱 편지는 어떻게 생겼나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>일곱 편지는 거의 같은 순서로 쓰였습니다.</p>
+<ol class="nums"><li><span>어느 교회에 보내는지</span></li><li><span>예수님이 어떤 분으로 오시는지</span></li><li><span>"내가 안다" — 잘한 것을 먼저 알아주심</span></li><li><span>"그러나" — 고쳐야 할 것</span></li><li><span>"회개하라", "두려워하지 말라" 같은 명령</span></li><li><span>"귀 있는 자는 성령이 교회들에게 하시는 말씀을 들을지어다"</span></li><li><span>"이기는 자에게는" — 주실 약속</span></li></ol>
+<p>이 순서를 알고 읽으면 편지가 훨씬 쉽게 보입니다.</p>
+<p>그리고 서머나 교회에는 ④ "고쳐야 할 것"이 없습니다. 칭찬만 받은 교회입니다.</p></div></details><details class="qa" id="d2-q2">
+<summary><span class="qn">Q2</span><span class="qt">편지마다 예수님 소개가 다른데, 왜 그런가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>1장에서 요한이 본 예수님의 모습에서 하나씩 꺼내 오셨습니다.</p>
+<p>그 교회에 가장 필요한 모습으로 찾아오신 것입니다.</p>
+<ul class="pairs"><li><b>에베소(사랑이 식은 교회)</b><span>"일곱 금 촛대 사이를 거니시는 이"<span class="ref">(2:1)</span>: 멀리 계시지 않고 교회 한가운데서 우리 사랑을 살피시는 분</span></li><li><b>서머나(죽음의 위협 앞에 선 교회)</b><span>"죽었다가 살아나신 이"<span class="ref">(2:8)</span>: 죽음을 이기신 분</span></li><li><b>버가모(타협이 들어온 교회)</b><span>"좌우에 날선 검을 가지신 이"<span class="ref">(2:12)</span>: 말씀으로 거짓을 가르시는 분</span></li></ul>
+<p>지금 내 형편에 꼭 맞는 모습으로 주님이 오십니다.</p></div></details><details class="qa" id="d2-q3">
+<summary><span class="qn">Q3</span><span class="qt">"귀 있는 자는 들을지어다" — 귀 없는 사람도 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>예수님이 비유를 말씀하실 때 자주 하셨던 말씀입니다.</p>
+<p>소리만 듣지 말고, 마음으로 듣고 따르라는 뜻입니다.</p>
+<p>그리고 "교회에게"가 아니라 "교회들에게"입니다.</p>
+<p>에베소에 보낸 편지도, 서머나에 보낸 편지도, 모든 교회가 함께 들으라는 말입니다.</p>
+<p>그러니 이 세 편지는 2천 년 전 세 교회의 편지이면서, 오늘 성은교회에 온 편지입니다.</p></div></details></div>
+</section><section id="d2-s2" style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">
+  <div class="sechead"><span class="secno">2 · 2:1-7</span><h2>에베소 교회</h2></div>
+  <div class="qas"><details class="qa" id="d2-q4">
+<summary><span class="qn">Q4</span><span class="qt">에베소는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>그 지역(아시아)에서 가장 크고 번화한 항구 도시였습니다.</p>
+<p>"큰 여신 아데미의 신전"<span class="ref">(행 19:27)</span>으로 유명했습니다.</p>
+<p>사도 바울이 삼 년 동안 밤낮 눈물로 가르친 교회입니다<span class="ref">(행 20:31)</span>.</p>
+<p>말씀을 오래, 깊이 배운 교회였습니다.</p></div></details><details class="qa" id="d2-q5">
+<summary><span class="qn">Q5</span><span class="qt">거짓 교사를 가려낸 것은 잘한 일 아닌가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>네, 잘한 일입니다. 주님이 2절에서 먼저 칭찬하십니다.</p>
+<blockquote>자칭 사도라 하되 아닌 자들을 시험하여 그의 거짓된 것을 네가 드러낸 것.</blockquote>
+<p>바울은 떠나면서 "사나운 이리가 들어올 것"이라고 경고했습니다<span class="ref">(행 20:29)</span>. 에베소 교회는 그 이리를 잘 막았습니다.</p>
+<p>문제는 거짓을 막는 사이에 사랑이 식었다는 것입니다<span class="ref">(4절)</span>.</p>
+<p>바른 것을 지키는 것도, 사랑하는 것도 둘 다 필요합니다. 하나만으로는 안 됩니다.</p></div></details><details class="qa" id="d2-q6">
+<summary><span class="qn">Q6</span><span class="qt">"처음 사랑"은 처음 예수님을 믿을 때의 뜨거운 마음인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>그렇게 생각하기 쉽지만, 5절을 보세요.</p>
+<p>"처음 감정을 되찾으라"가 아니라 "처음 행위를 가지라"입니다.</p>
+<p>처음 사랑은 감정이 아니라 행동입니다.</p>
+<p>에베소 교회는 일은 계속했습니다(2절, "네 행위와 수고"). 그런데 사랑으로 하던 "처음" 행위가 빠졌습니다.</p>
+<p>그리고 이 사랑은 두 방향입니다. 하나님을 사랑하는 것, 그리고 사람을 사랑하는 것입니다<span class="ref">(마 22:37-39)</span>.</p>
+<blockquote>보는 바 그 형제를 사랑하지 아니하는 자는 보지 못하는 바 하나님을 사랑할 수 없느니라<cite>요일 4:20</cite></blockquote>
+<p>마음이 다시 뜨거워질 때까지 기다리지 않아도 됩니다. 오늘 사랑으로 먼저 행동하면 됩니다.</p></div></details><details class="qa" id="d2-q7">
+<summary><span class="qn">Q7</span><span class="qt">"어디서 떨어졌는지를 생각하고"<span class="ref">(2:5)</span>는 어떻게 하는 건가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>5절에는 세 단계가 있습니다.</p>
+<ol class="nums"><li><span>생각하라 — 언제부터 기도가 줄었는지, 언제부터 사람을 사랑하기보다 판단하게 되었는지 돌아봅니다.</span></li><li><span>회개하라 — 그 자리에서 돌아섭니다.</span></li><li><span>처음 행위를 가지라 — 그때 하던 사랑의 행동을 다시 합니다.</span></li></ol>
+<p>길을 잃었을 때 처음 길을 잘못 든 곳으로 돌아가는 것과 같습니다.</p></div></details><details class="qa" id="d2-q8">
+<summary><span class="qn">Q8</span><span class="qt">"촛대를 옮기리라"<span class="ref">(2:5)</span>는 교회가 없어진다는 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>1장 20절에서 "일곱 촛대는 일곱 교회"라고 했습니다. 촛대는 빛을 비추는 자리입니다.</p>
+<p>촛대를 옮긴다는 것은, 그 교회가 더 이상 예수님의 빛을 비추는 교회로 서 있지 못하게 된다는 무서운 경고입니다.</p>
+<p>그런데 앞에 조건이 붙어 있습니다. "만일 … 회개하지 아니하면."</p>
+<p>그리고 이 말을 하시는 분은 촛대 사이를 거니시는 주님입니다.</p>
+<p>버리시려는 말씀이 아니라, "처음 사랑으로 돌아오라"고 부르시는 말씀입니다.</p></div></details><details class="qa" id="d2-q9">
+<summary><span class="qn">Q9</span><span class="qt">"니골라 당"<span class="ref">(2:6, 15)</span>은 누구인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>성경은 니골라 당이 누구인지 자세히 말해 주지 않습니다. 정확히는 모릅니다.</p>
+<p>그런데 버가모 편지에 실마리가 있습니다. 14절에서 "발람의 교훈"을 말하고, 15절에서 "이와 같이 … 니골라 당의 교훈"이라고 합니다.</p>
+<p>발람의 교훈은 우상의 제물을 먹고 음행하게 한 것입니다<span class="ref">(Q21 참고)</span>.</p>
+<p>그러니 니골라 당은 "이 정도는 괜찮아" 하며 성도들을 세상과 타협하게 만든 사람들이라고 보면 됩니다.</p>
+<p>그리고 6절을 보세요. 주님은 "니골라 당의 행위를 미워"하신다고 하십니다. 사람이 아니라 "행위"입니다.</p>
+<p>잘못된 것은 미워하되, 사람은 미워하지 않는 것. 에베소 교회에 꼭 필요한 말씀이었습니다.</p></div></details><details class="qa" id="d2-q10">
+<summary><span class="qn">Q10</span><span class="qt">"생명나무의 열매"<span class="ref">(2:7)</span>는 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>성경 맨 앞, 에덴동산에 생명나무가 있었습니다<span class="ref">(창 2:9)</span>.</p>
+<p>사람이 죄를 지은 뒤, 하나님은 생명나무로 가는 길을 막으셨습니다<span class="ref">(창 3:24)</span>.</p>
+<p>그런데 요한계시록 마지막 장에 그 생명나무가 다시 나옵니다<span class="ref">(22:2, 14)</span>.</p>
+<p>예수님이 닫혔던 길을 다시 열어 주신 것입니다.</p>
+<p>성경의 처음과 끝이 이렇게 이어집니다. 잃어버렸던 영원한 생명을 예수님이 다시 주십니다.</p></div></details></div>
+</section><section id="d2-s3" style="--c:#AF52DE;--ci:#8944AB;--cl:#DA8FFF">
+  <div class="sechead"><span class="secno">3 · 2:8-11</span><h2>서머나 교회</h2></div>
+  <div class="qas"><details class="qa" id="d2-q11">
+<summary><span class="qn">Q11</span><span class="qt">서머나는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>지금 튀르키예의 이즈미르라는 도시입니다.</p>
+<p>로마에 충성하는 도시로, 일찍부터 로마 황제를 위한 신전을 세웠습니다.</p>
+<p>그래서 황제를 섬기지 않는 그리스도인들은 미움을 받고 가난하게 살았습니다.</p>
+<p>서머나는 오래전에 한 번 무너졌다가 다시 세워진 도시이기도 합니다.</p>
+<p>그런 도시의 성도들에게 예수님은 "죽었다가 살아나신 이"<span class="ref">(2:8)</span>로 오셨습니다. 무너져도 다시 일으키시는 분입니다.</p></div></details><details class="qa" id="d2-q12">
+<summary><span class="qn">Q12</span><span class="qt">가난한데 "실상은 부요한 자"<span class="ref">(2:9)</span>라는 게 무슨 말인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>9절의 "궁핍"은 원래 성경 말(헬라어)로 "아무것도 없는, 거지 같은 가난"이라는 뜻입니다.</p>
+<p>세상 눈으로 보면 서머나 교회는 가장 가난한 교회였습니다.</p>
+<p>그런데 하나님 눈으로 보면 가장 부자인 교회였습니다.</p>
+<p>예수님을 가졌고, 하나님 나라를 가졌기 때문입니다.</p>
+<p>야고보도 "하나님이 세상에서 가난한 자를 택하사 믿음에 부요하게 하시고"라고 했습니다<span class="ref">(약 2:5)</span>.</p>
+<p>내 통장이 내가 얼마나 부자인지 말해 주지 않습니다.</p></div></details><details class="qa" id="d2-q13">
+<summary><span class="qn">Q13</span><span class="qt">"사탄의 회당"<span class="ref">(2:9)</span>은 유대인을 미워하라는 말인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 서머나 교회를 비방하고 로마 관리들에게 고발하던 그 지역의 일부 사람들을 두고 하신 말씀입니다.</p>
+<p>하나님의 백성이라고 말하면서 하나님의 백성을 괴롭히면, 이름만 하나님 백성이지 실제로는 하나님을 대적하는 편에 서 있다는 뜻입니다.</p>
+<p>민족 전체를 미워하라는 말이 아닙니다.</p>
+<p>오히려 "나는 하나님의 백성이다"라고 말하는 우리도, 다른 성도를 괴롭히고 있지는 않은지 돌아보게 하는 말씀입니다.</p></div></details><details class="qa" id="d2-q14">
+<summary><span class="qn">Q14</span><span class="qt">칭찬만 받은 교회인데, 왜 고난을 받나요? 하나님은 왜 막아 주지 않으셨나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>솔직히 우리는 그 이유를 다 알 수 없습니다.</p>
+<p>그래도 이 편지에서 분명히 알 수 있는 것이 있습니다.</p>
+<p>첫째, 고난은 벌이 아닙니다. 서머나는 책망이 하나도 없는 교회였습니다.</p>
+<p>둘째, 고난 뒤에는 "마귀"가 있지만<span class="ref">(10절)</span>, 그 기간은 "십 일", 곧 하나님이 정하십니다<span class="ref">(Q15 참고)</span>.</p>
+<p>셋째, 주님은 "고난이 없을 것이다"가 아니라 "두려워하지 말라" 하십니다. 고난 속에 함께 계시겠다는 약속입니다.</p>
+<p>예수님도 말씀하셨습니다. "세상에서는 너희가 환난을 당하나 담대하라 내가 세상을 이기었노라"<span class="ref">(요 16:33)</span>.</p></div></details><details class="qa" id="d2-q15">
+<summary><span class="qn">Q15</span><span class="qt">"십 일 동안 환난을 받으리라"<span class="ref">(2:10)</span>는 정말 열흘인가요? 10년인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>날짜를 계산해서 "10년이다", "몇 년부터 몇 년까지다" 하는 해석도 있지만, 그렇게 읽을 필요가 없습니다.</p>
+<p>다니엘과 세 친구가 바벨론 음식을 거절하고 "열흘 동안" 시험을 받은 이야기<span class="ref">(단 1:12)</span>처럼, 열흘은 "짧고, 끝이 있는 시험"을 말합니다.</p>
+<p>고난은 오지만, 영원히 계속되지 않습니다. 끝나는 날은 하나님이 정하십니다.</p></div></details><details class="qa" id="d2-q16">
+<summary><span class="qn">Q16</span><span class="qt">"죽도록 충성하라"<span class="ref">(2:10)</span>는 정말 죽으라는 말인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>"죽는 한이 있어도 끝까지 믿음을 지키라"는 뜻입니다.</p>
+<p>서머나에서는 실제로 목숨을 잃은 성도들도 있었습니다.</p>
+<p>수십 년 뒤, 서머나 교회의 지도자 폴리갑은 "예수님을 부인하면 살려 주겠다"는 말을 들었습니다.</p>
+<p>그는 이렇게 대답했다고 전해집니다. "86년 동안 그분을 섬겼지만, 그분은 한 번도 나를 해롭게 하신 적이 없습니다. 그런데 어떻게 나를 구원하신 왕을 욕할 수 있겠습니까?"</p>
+<p>오늘 우리에게 "죽도록 충성"은, 힘들어도 포기하지 않고 끝까지 예수님 곁에 남는 것입니다.</p></div></details><details class="qa" id="d2-q17">
+<summary><span class="qn">Q17</span><span class="qt">"생명의 관"<span class="ref">(2:10)</span>은 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>여기서 "관"은 임금이 쓰는 왕관이 아니라, 경기에서 이긴 사람이 머리에 쓰는 승리의 월계관입니다.</p>
+<p>세상은 서머나 성도들에게 죽음을 내밀었습니다. 그런데 주님은 생명을 씌워 주십니다.</p>
+<p>"생명의 관"은 "생명이라는 상"입니다. 끝까지 달린 사람에게 주님은 영원한 생명을 상으로 주십니다.</p></div></details><details class="qa" id="d2-q18">
+<summary><span class="qn">Q18</span><span class="qt">"둘째 사망"<span class="ref">(2:11)</span>은 무엇인가요? 첫째 사망도 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>첫째 사망은 우리 몸이 죽는 것입니다.</p>
+<p>둘째 사망은 마지막 심판 때 하나님과 영원히 떨어지는 것입니다. 요한계시록은 이것을 "불못"이라고 부릅니다<span class="ref">(20:14; 21:8)</span>.</p>
+<p>서머나 성도들은 첫째 사망을 당할 수도 있었습니다. 실제로 그랬습니다.</p>
+<p>그러나 주님은 약속하십니다. "이기는 자는 둘째 사망의 해를 받지 아니하리라."</p>
+<p>몸은 죽일 수 있어도, 영원한 생명은 아무도 빼앗을 수 없습니다.</p></div></details></div>
+</section><section id="d2-s4" style="--c:#5856D6;--ci:#3634A3;--cl:#7D7AFF">
+  <div class="sechead"><span class="secno">4 · 2:12-17</span><h2>버가모 교회</h2></div>
+  <div class="qas"><details class="qa" id="d2-q19">
+<summary><span class="qn">Q19</span><span class="qt">"사탄의 권좌가 있는 데"<span class="ref">(2:13)</span>라니, 버가모는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>그 지역의 오랜 수도였고, 신전이 아주 많은 도시였습니다.</p>
+<p>큰 신의 제단이 있었고, 병을 고친다는 신의 신전도 있었습니다.</p>
+<p>그리고 그 지역에서 처음으로 로마 황제를 위한 신전을 세운 도시였습니다.</p>
+<p>"사탄의 권좌"가 이 가운데 정확히 무엇을 가리키는지는 의견이 여럿입니다.</p>
+<p>분명한 것은, 우상과 황제 숭배가 가장 강하게 성도들을 누르던 곳이라는 것입니다.</p>
+<p>그래서 주님은 먼저 이렇게 말씀하십니다. "네가 어디에 사는지를 내가 아노니." 그 힘든 자리를 아신다는 말씀입니다.</p></div></details><details class="qa" id="d2-q20">
+<summary><span class="qn">Q20</span><span class="qt">안디바는 누구인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>성경에서 이 구절<span class="ref">(2:13)</span>에만 나오는 이름입니다. 그에 대해 전해 오는 이야기가 있지만 확실하지는 않습니다.</p>
+<p>확실한 것은 하나입니다. 예수님이 그를 "내 충성된 증인"이라고 부르셨다는 것입니다.</p>
+<p>"충성된 증인"은 1장 5절에서 예수님을 소개하던 이름입니다. 3장 14절에서는 예수님이 스스로를 이렇게 부르십니다.</p>
+<p>예수님이 자기 이름을 안디바에게 나눠 주신 것입니다.</p>
+<p>세상이 기억하지 않는 성도의 이름을, 주님은 기억하십니다.</p></div></details><details class="qa" id="d2-q21">
+<summary><span class="qn">Q21</span><span class="qt">"발람의 교훈"<span class="ref">(2:14)</span>은 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>민수기에 나오는 이야기입니다. 모압 왕 발락이 발람이라는 사람을 불러 이스라엘을 저주하게 했습니다. (나귀가 말을 한 이야기가 바로 이 이야기입니다. 민 22장.)</p>
+<p>그런데 하나님이 막으셔서 저주하지 못했습니다.</p>
+<p>그러자 발람은 꾀를 냈습니다<span class="ref">(민 31:16)</span>. 모압 여인들이 이스라엘 사람들을 자기 신들의 잔치에 초대해, 함께 먹고 그 신들에게 절하게 한 것입니다<span class="ref">(민 25:1-2)</span>.</p>
+<p>칼로 이기지 못하니, 잔치로 무너뜨린 것입니다.</p>
+<p>버가모 교회 안에도 "이 정도는 괜찮아" 하며 성도들을 우상 잔치로 이끄는 사람들이 있었습니다.</p></div></details><details class="qa" id="d2-q22">
+<summary><span class="qn">Q22</span><span class="qt">"우상의 제물"을 먹는 게 왜 그렇게 큰 문제인가요? 오늘 우리와 무슨 상관이 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>그때는 같은 일을 하는 사람들의 모임(오늘의 협회나 조합 같은 것)이 신전에서 잔치를 열었습니다. 그 잔치 고기는 신에게 바친 것이었습니다.</p>
+<p>잔치에 빠지면 일자리나 장사에 불이익을 받았습니다. 그래서 "가서 먹기만 하면 되지" 하는 유혹이 컸습니다.</p>
+<p>고기 자체가 문제가 아니라, 우상을 섬기는 자리에 함께 앉는 것이 문제였습니다.</p>
+<p>바울도 "너희가 주의 잔과 귀신의 잔을 겸하여 마시지 못하고"라고 했습니다<span class="ref">(고전 10:21)</span>.</p>
+<p>오늘 우리에게는 "다들 그렇게 하니까", "먹고살려면 어쩔 수 없잖아" 하며 하나님보다 다른 것을 앞에 두는 타협이 바로 그 자리입니다.</p></div></details><details class="qa" id="d2-q23">
+<summary><span class="qn">Q23</span><span class="qt">"내 입의 검으로 그들과 싸우리라"<span class="ref">(2:16)</span>는 예수님이 교회와 싸우신다는 말인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>자세히 보세요. 교회 전체에게는 "회개하라" 하시고, 싸우시는 대상은 "그들", 곧 타협을 가르친 사람들입니다.</p>
+<p>그리고 그 검은 "입"에서 나옵니다. 칼이 아니라 말씀입니다.</p>
+<blockquote>하나님의 말씀은 … 좌우에 날선 어떤 검보다도 예리하여<cite>히 4:12</cite></blockquote>
+<p>주님은 말씀으로 거짓을 드러내시고, 교회를 지키십니다.</p>
+<p>안디바처럼 주님의 이름을 붙든 사람은 품으시고, 타협은 그냥 두지 않으십니다.</p></div></details><details class="qa" id="d2-q24">
+<summary><span class="qn">Q24</span><span class="qt">"감추었던 만나"<span class="ref">(2:17)</span>는 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>광야에서 하나님이 이스라엘을 먹이신 하늘 양식이 만나입니다.</p>
+<p>하나님은 그 만나를 항아리에 담아 언약궤 안에 간수하게 하셨습니다<span class="ref">(출 16:33; 히 9:4)</span>. 그래서 "감추었던" 만나입니다.</p>
+<p>예수님은 "나는 하늘에서 내려온 살아 있는 떡이니"라고 하셨습니다<span class="ref">(요 6:51)</span>.</p>
+<p>우상 잔치에 가지 않아 굶을 수도 있었던 버가모 성도들에게, 주님은 세상 잔치보다 더 좋은 하늘 양식, 곧 예수님 자신을 주시겠다고 하십니다.</p></div></details><details class="qa" id="d2-q25">
+<summary><span class="qn">Q25</span><span class="qt">"흰 돌"과 "새 이름"<span class="ref">(2:17)</span>은 무엇인가요? 왜 "받는 자 밖에는" 모르나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>"흰 돌"은 해석이 여럿입니다. 그때 재판에서 "무죄"를 뜻하던 흰 돌, 잔치에 들어가는 입장권으로 쓰이던 돌 등입니다. 어느 하나로 딱 정하기는 어렵습니다.</p>
+<p>다만 어느 쪽이든 뜻은 하나로 모입니다. "너는 받아들여졌다."</p>
+<p>그 돌 위에 "새 이름"이 있습니다. 하나님은 이사야를 통해 "새 이름으로 일컬음이 될 것"이라고 약속하셨습니다<span class="ref">(사 62:2)</span>.</p>
+<p>"받는 자 밖에는 그 이름을 알 사람이 없느니라"는, 아주 가까운 사이에서만 부르는 이름처럼, 주님과 나 사이의 특별한 관계를 말합니다.</p>
+<p>예수님은 "자기 양의 이름을 각각 불러" 인도하시는 분입니다<span class="ref">(요 10:3)</span>.</p>
+<p>그리고 마지막 날 "그의 이름도 그들의 이마에 있으리라"<span class="ref">(22:4)</span>는 약속으로 이어집니다.</p></div></details></div>
+</section><section id="d2-s5" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">
+  <div class="sechead"><span class="secno">5</span><h2>오늘 우리에게</h2></div>
+  <div class="qas"><details class="qa" id="d2-q26">
+<summary><span class="qn">Q26</span><span class="qt">"이기는 자"는 특별한 사람만 말하는 건가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. "이기는 자"라는 말은 한 교회에만 하신 것이 아니라 일곱 교회 모두에게 똑같이 하셨습니다.</p>
+<p>그런데 어떤 이단은 "이긴 자라는 특별한 한 사람이 있고, 그 사람을 만나야 구원받는다"고 가르칩니다. 성경과 다른 말입니다.</p>
+<p>같은 요한이 쓴 요한일서가 답을 줍니다.</p>
+<blockquote>세상을 이기는 승리는 이것이니 우리의 믿음이니라 예수께서 하나님의 아들이심을 믿는 자가 아니면 세상을 이기는 자가 누구냐<cite>요일 5:4-5</cite></blockquote>
+<p>이기신 분은 예수님입니다. 그 예수님을 믿고 끝까지 붙어 있는 사람이 모두 "이기는 자"입니다.</p>
+<p>누가 "내가 이긴 자다"라고 하면 조심하세요.</p></div></details><details class="qa" id="d2-q27">
+<summary><span class="qn">Q27</span><span class="qt">주님이 "내가 안다"고 하시니, 다 아신다는 게 오히려 무섭기도 해요.</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>세 편지를 다시 보세요. 주님이 "내가 안다"고 하시며 먼저 꺼내신 것은 잘못이 아니었습니다.</p>
+<p>에베소에게는 "네 수고"를, 서머나에게는 "네 가난"을, 버가모에게는 "네가 사는 그 힘든 자리"를 아신다고 하셨습니다.</p>
+<p>아무도 몰라주던 것을 주님이 먼저 알아주셨습니다.</p>
+<p>고쳐야 할 것을 말씀하실 때도, 버리시려는 것이 아니라 다시 부르시려는 것입니다.</p>
+<p>다 아시는 분 앞이라 숨길 필요가 없습니다. 있는 그대로 나아가면 됩니다.</p></div></details><details class="qa" id="d2-q28">
+<summary><span class="qn">Q28</span><span class="qt">2천 년 전 세 교회에 보낸 편지가 오늘 나와 무슨 상관이 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>우리 안에도 세 교회가 다 있습니다.</p>
+<ul class="dots"><li>바른 것은 잘 지키는데 사랑이 식은 에베소</li><li>힘들고 가난해도 주님을 붙드는 서머나</li><li>"이 정도는 괜찮겠지" 하는 타협이 슬그머니 들어온 버가모</li></ul>
+<p>그래서 편지마다 "성령이 교회들에게 하시는 말씀을 들을지어다"라고 합니다.</p>
+<div class="sharebox"><span>나눠 볼 질문</span><p>오늘 내 모습은 세 교회 가운데 어느 교회와 가장 닮았나요? 그 교회에 주신 주님의 말씀은 무엇이었나요?</p></div></div></details></div>
+</section>
+<div class="closing"><span class="tag">오늘 2장의 한 줄 정리</span><p class="verse">"내가 네 행위와 수고와 네 인내를 알고"<cite>2:2</cite></p><p class="sum">다 아시는 주님이, 오늘 나를 처음 사랑으로 다시 부르십니다.</p></div>
+<div class="ask"><p>더 궁금한 것이 있으면 <strong>구글폼 Q&amp;A</strong>에 남겨 주세요! 답변 드리겠습니다.</p>
+<a class="formbtn" href="https://forms.gle/s3MssGb4nLTBFV3DA" target="_blank" rel="noopener">궁금한 것 남기기</a></div>
+<nav class="pager" aria-label="다른 날"><a class="pn" href="#day1"><small>‹ 이전</small><b>1일차</b><span>요한계시록 1장</span></a><a class="pn next" href="#day3"><small>다음 ›</small><b>3일차</b><span>요한계시록 2장 18절-3장 6절</span></a></nav>
+</main>
+</div>
+<div class="view" id="view-day3" data-view="day3" hidden style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">
+<div class="bar">
+  <div class="wrap barrow">
+    <a class="back" href="#home">‹ 목록</a><span class="bartitle">3일차</span>
+    <button type="button" class="toggle-all">모두 펼치기</button>
+  </div>
+  <div class="wrap chips"><button type="button" data-go="d3-s1" style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">두아디라 교회</button><button type="button" data-go="d3-s2" style="--c:#A2845E;--ci:#7F6545;--cl:#C9AE88">사데 교회</button><button type="button" data-go="d3-s3" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">오늘 우리에게</button></div>
+</div>
+<div class="wrap dayhead">
+  <div class="hero">
+    <div class="icon"><div><b>3</b><span>일차</span></div></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 4일(수)</p><h1 class="dtitle">요한계시록 2장 18절-3장 6절</h1><p class="meta">질문 25개</p></div>
+  </div>
+  <p class="intro">요한계시록 2장 18절-3장 6절을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
+  <div class="card mapcard">
+  <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle class="past" cx="76" cy="241" r="5"/><text class="lbl" x="86" y="245" text-anchor="start">에베소</text><circle class="past" cx="51" cy="163" r="5"/><text class="lbl" x="61" y="167" text-anchor="start">서머나</text><circle class="past" cx="56" cy="49" r="5"/><text class="lbl" x="66" y="53" text-anchor="start">버가모</text><circle cx="140" cy="82" r="15" fill="#FF2D55" opacity=".18"/><circle cx="140" cy="82" r="7" fill="#FF2D55"/><text class="lbl lbl-today" x="150" y="86" text-anchor="start" style="fill:#D30F45">두아디라</text><circle cx="166" cy="152" r="15" fill="#A2845E" opacity=".18"/><circle cx="166" cy="152" r="7" fill="#A2845E"/><text class="lbl lbl-today" x="176" y="148" text-anchor="start" style="fill:#7F6545">사데</text><circle class="past" cx="227" cy="174" r="5"/><text class="lbl" x="227" y="203" text-anchor="middle">빌라델비아</text><circle class="past" cx="303" cy="257" r="5"/><text class="lbl" x="290" y="246" text-anchor="end">라오디게아</text></svg>
+  <div><h2>오늘 읽은 교회: 두아디라, 사데</h2><p class="cap">점선은 편지가 돌아간 길입니다. 에베소에서 시작해 라오디게아에서 끝납니다.</p><div class="legend"><div><span class="dot" style="background:#FF2D55"></span>두아디라</div><div><span class="dot" style="background:#A2845E"></span>사데</div><div><span class="dot" style="background:#C7C7CC"></span>다른 교회</div></div></div>
+</div>
+</div>
+<main class="wrap daymain">
+<section id="d3-s1" style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">
+  <div class="sechead"><span class="secno">1 · 2:18-29</span><h2>두아디라 교회</h2></div>
+  <div class="qas"><details class="qa" id="d3-q1">
+<summary><span class="qn">Q1</span><span class="qt">두아디라는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>일곱 교회가 있던 도시 가운데 가장 작은 도시였지만, 장사와 기술자가 많은 도시였습니다.</p>
+<p>사도행전에 나오는 "자색 옷감 장사" 루디아가 바로 두아디라 사람입니다<span class="ref">(행 16:14)</span>.</p>
+<p>그때는 같은 일을 하는 사람들의 모임(조합)에 들어가야 장사를 할 수 있었습니다.</p>
+<p>그런데 조합 모임에는 우상에게 제사하고, 그 고기를 먹고, 음란한 잔치를 벌이는 일이 따라왔습니다.</p>
+<p>그래서 두아디라 성도들에게는 "먹고살려면 어쩔 수 없잖아" 하는 유혹이 아주 컸습니다.</p></div></details><details class="qa" id="d3-q2">
+<summary><span class="qn">Q2</span><span class="qt">왜 예수님을 "하나님의 아들"<span class="ref">(2:18)</span>이라고 부르나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>요한계시록에서 "하나님의 아들"이라는 이름은 이곳에만 나옵니다.</p>
+<p>이 이름은 시편 2편에서 왔습니다. "너는 내 아들이라"<span class="ref">(시 2:7)</span>, "네가 철장으로 그들을 깨뜨림이여"<span class="ref">(시 2:9)</span>.</p>
+<p>그리고 같은 편지 끝에서 예수님은 바로 이 "철장" 이야기를 하십니다<span class="ref">(2:27)</span>.</p>
+<p>그러니까 두아디라 편지는 처음과 끝이 시편 2편으로 묶여 있습니다.</p>
+<p>세상의 어떤 조합이나 권력보다 높으신 분, 진짜 왕이신 하나님의 아들이 두아디라에 말씀하신다는 뜻입니다.</p></div></details><details class="qa" id="d3-q3">
+<summary><span class="qn">Q3</span><span class="qt">"눈이 불꽃 같고, 발이 빛난 주석 같다"<span class="ref">(2:18)</span>는 게 무서워요.</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>1장에서 요한이 본 예수님의 모습과 같습니다<span class="ref">(1:14-15)</span>.</p>
+<p>불꽃 같은 눈은 속까지 꿰뚫어 보시는 눈입니다. 23절에서 주님은 "나는 사람의 뜻과 마음을 살피는 자"라고 하십니다.</p>
+<p>속을 숨긴 사람에게는 무서운 눈이지만, 아무도 모르게 믿음을 지킨 사람에게는 고마운 눈입니다.</p>
+<p>"먹고살아야지" 하는 말 앞에서 혼자 손해를 본 그 마음을 주님이 다 보고 계시니까요.</p>
+<p>빛난 주석 같은 발은 흔들리지 않고 힘 있게 서 계신 모습입니다.</p></div></details><details class="qa" id="d3-q4">
+<summary><span class="qn">Q4</span><span class="qt">"네 나중 행위가 처음 것보다 많도다"<span class="ref">(2:19)</span>는 칭찬인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>네, 큰 칭찬입니다. 두아디라는 사랑, 믿음, 섬김, 인내가 해가 갈수록 더 좋아지는 교회였습니다.</p>
+<p>앞에서 본 에베소 교회는 "처음 사랑을 버렸다"는 책망을 받았지요. 두아디라는 그 반대였습니다.</p>
+<p>그런데 이렇게 칭찬받는 교회에도 고쳐야 할 것이 있었습니다<span class="ref">(20절)</span>.</p>
+<p>잘하는 것이 많다고 해서, 잘못된 것을 그냥 두어도 되는 것은 아닙니다.</p></div></details><details class="qa" id="d3-q5">
+<summary><span class="qn">Q5</span><span class="qt">"이세벨"<span class="ref">(2:20)</span>은 누구인가요? 그 사람의 진짜 이름인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>진짜 이름이라기보다, 주님이 붙이신 이름으로 보는 것이 좋습니다.</p>
+<p>구약의 이세벨은 아합 왕의 아내로, 이스라엘을 바알 숭배로 끌고 간 왕비입니다<span class="ref">(왕상 16:31)</span>.</p>
+<p>두아디라 교회 안에서 "이 정도는 괜찮아" 하며 성도들을 우상 숭배와 음행으로 이끈 사람에게 주님이 그 이름을 붙이신 것입니다.</p>
+<p>주님이 문제 삼으신 것은 그 사람이 누구냐(남자냐 여자냐)가 아니라, 무엇을 가르쳤느냐입니다.</p></div></details><details class="qa" id="d3-q6">
+<summary><span class="qn">Q6</span><span class="qt">"자칭 선지자"라면, 교회의 지도자급 사람이었나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>네, 그렇게 보는 것이 맞습니다.</p>
+<p>초대교회에서 선지자는 사도 다음가는 직분이었습니다. "첫째는 사도요 둘째는 선지자요 셋째는 교사요"<span class="ref">(고전 12:28)</span>.</p>
+<p>이 사람은 교회 안에서 "가르치는" 자리에 있었고<span class="ref">(20절)</span>, 그를 따르는 무리도 있었습니다<span class="ref">(22-23절)</span>.</p>
+<p>그런데 "자칭", 곧 스스로 선지자라고 내세운 사람이었습니다. 주님이 세우시거나 교회가 검증한 지도자가 아니었습니다.</p>
+<p>말도 잘하고 영향력도 있는 사람이라, 교회가 그 가르침을 막기가 더 어려웠을 것입니다.</p>
+<p>그래서 오늘 우리도 "누가 말하느냐"보다 "성경과 같은 말이냐"를 살펴야 합니다.</p></div></details><details class="qa" id="d3-q7">
+<summary><span class="qn">Q7</span><span class="qt">사랑이 많은 교회라면, 다 받아 주는 게 맞지 않나요? 왜 "용납함"<span class="ref">(2:20)</span>이 책망을 받나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>사람을 품는 것과 거짓 가르침을 그냥 두는 것은 다릅니다.</p>
+<p>두아디라 교회는 그 가르침을 그냥 두었고, 그 사이에 "내 종들", 곧 주님의 성도들이 넘어졌습니다<span class="ref">(20절)</span>.</p>
+<p>진짜 사랑은 넘어지는 사람을 그대로 두지 않습니다.</p>
+<p>주님도 이세벨을 바로 치지 않으시고 "회개할 기회"를 주셨습니다<span class="ref">(21절)</span>. 이것이 사랑입니다.</p>
+<p>사랑은 다 받아 주는 것이 아니라, 끝까지 살리려고 하는 것입니다.</p></div></details><details class="qa" id="d3-q8">
+<summary><span class="qn">Q8</span><span class="qt">"침상에 던지고 … 그의 자녀를 죽이리니"<span class="ref">(2:22-23)</span>는 너무 무서운 말 아닌가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아주 엄한 경고입니다. 그런데 순서를 보세요.</p>
+<p>먼저 21절에서 주님은 기다리셨습니다. "회개할 기회를 주었으되."</p>
+<p>그리고 22절에도 "만일 그의 행위를 회개하지 아니하면"이라는 조건이 붙어 있습니다.</p>
+<p>"그의 자녀"는 그 사람의 가르침을 따르던 사람들을 말합니다.</p>
+<p>주님은 이렇게 하시는 이유도 말씀하십니다. "모든 교회가 나는 사람의 뜻과 마음을 살피는 자인 줄 알지라"<span class="ref">(23절)</span>.</p>
+<p>겁을 주시려는 것이 아니라, 교회를 거짓에서 지키시려는 것입니다.</p></div></details><details class="qa" id="d3-q9">
+<summary><span class="qn">Q9</span><span class="qt">"사탄의 깊은 것"<span class="ref">(2:24)</span>은 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>거짓 교사들은 "우리는 남들이 모르는 깊은 진리를 안다"고 자랑했을 것입니다.</p>
+<p>그런데 주님은 그것을 "사탄의 깊은 것"이라고 부르십니다. 깊은 영성이라고 자랑한 것이 사실은 사탄에게서 온 것이라는 뜻입니다.</p>
+<p>진짜 "깊은 것"은 성령님이 보여 주시는 "하나님의 깊은 것"입니다<span class="ref">(고전 2:10)</span>.</p>
+<p>누가 "특별한 비밀을 알려 주겠다"고 하면 조심해야 합니다.</p></div></details><details class="qa" id="d3-q10">
+<summary><span class="qn">Q10</span><span class="qt">"다른 짐으로 너희에게 지울 것은 없노라"<span class="ref">(2:24)</span>는 무슨 말인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>거짓 가르침을 따르지 않고 버틴 성도들에게 주님이 하신 말씀입니다.</p>
+<p>"더 대단한 것을 하라"고 하지 않으십니다. 25절에서 이렇게 말씀하십니다. "다만 너희에게 있는 것을 내가 올 때까지 굳게 잡으라."</p>
+<p>새 비밀을 더 알 필요가 없습니다. 이미 받은 말씀, 이미 가진 믿음을 붙들면 됩니다.</p>
+<p>힘들게 버티는 사람에게 짐을 더 얹지 않으시는 주님의 따뜻한 말씀입니다.</p></div></details><details class="qa" id="d3-q11">
+<summary><span class="qn">Q11</span><span class="qt">"만국을 다스리는 권세 … 철장"<span class="ref">(2:26-27)</span>은 이긴 자가 세상 권력을 잡는다는 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 이 말씀은 시편 2편 9절에서 왔고, 원래 메시아 예수님의 권세입니다.</p>
+<p>요한계시록도 이 권세를 예수님께 돌립니다<span class="ref">(12:5; 19:15)</span>.</p>
+<p>27절 끝에서 예수님은 "나도 내 아버지께 받은 것이 그러하니라" 하십니다. 아버지께 받으신 권세를, 끝까지 붙든 성도들과 함께 나누시겠다는 약속입니다.</p>
+<p>어떤 이단은 "이긴 자가 철장 권세를 받는다"며 특정 사람을 높이는데, 성경과 다른 말입니다.</p>
+<p>조합의 힘 앞에서 손해를 보던 두아디라 성도들에게, 마지막에 이기는 쪽은 예수님 편이라는 위로입니다.</p></div></details><details class="qa" id="d3-q12">
+<summary><span class="qn">Q12</span><span class="qt">"새벽 별"<span class="ref">(2:28)</span>은 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>새벽 별은 밤이 가장 어두울 때 떠서, 곧 아침이 온다는 것을 알려 주는 별입니다.</p>
+<p>22장 16절에서 예수님은 자신을 "광명한 새벽 별"이라고 하십니다.</p>
+<p>그러니까 새벽 별을 주신다는 것은, 긴 밤을 믿음으로 버틴 사람에게 예수님 자신을 주신다는 약속입니다.</p>
+<p>우리의 밤도 아무리 길어도 아침은 옵니다. 예수님이 새벽 별이 되어 우리를 인도하시니까요.</p></div></details></div>
+</section><section id="d3-s2" style="--c:#A2845E;--ci:#7F6545;--cl:#C9AE88">
+  <div class="sechead"><span class="secno">2 · 3:1-6</span><h2>사데 교회</h2></div>
+  <div class="qas"><details class="qa" id="d3-q13">
+<summary><span class="qn">Q13</span><span class="qt">사데는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>옛날 리디아 왕국의 수도로, 금이 많이 나던 아주 부유한 도시였습니다.</p>
+<p>가파른 절벽 위에 성을 쌓아서 "아무도 우리를 무너뜨리지 못한다"고 자신하던 곳이었습니다.</p>
+<p>그런데 적군이 몰래 그 절벽을 기어 올라와, 성을 두 번이나 빼앗겼습니다.</p>
+<p>가장 자신 있던 곳이 무너진 곳이었습니다. 그래서 "깨어 있으라"는 말씀이 사데 사람들에게 더 아프게 들렸을 것입니다.</p></div></details><details class="qa" id="d3-q14">
+<summary><span class="qn">Q14</span><span class="qt">"하나님의 일곱 영과 일곱 별을 가지신 이"<span class="ref">(3:1)</span>는 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>1장에서 본 예수님의 모습입니다. "일곱 영"은 성령님<span class="ref">(1:4)</span>, "일곱 별"은 교회들<span class="ref">(1:20)</span>입니다.</p>
+<p>죽어 가는 사데 교회에 예수님은 성령님을 가지신 분, 교회를 손에 붙드신 분으로 오십니다.</p>
+<p>죽은 교회를 다시 살리시는 힘이 성령님께 있고, 그 교회를 아직 놓지 않고 붙들고 계신다는 뜻입니다.</p></div></details><details class="qa" id="d3-q15">
+<summary><span class="qn">Q15</span><span class="qt">"살았다 하는 이름은 가졌으나 죽은 자로다"<span class="ref">(3:1)</span> — 어떻게 살아 있는데 죽었다는 건가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>여기서 "이름"은 사람들이 붙여 준 평판, 소문을 말합니다.</p>
+<p>사람들은 사데 교회를 보고 "저 교회 살아 있다"고 했습니다. 활동도 많고 문제도 없어 보였습니다.</p>
+<p>그런데 주님의 눈에는 죽은 교회였습니다.</p>
+<p>사람들이 하는 평가와 주님의 평가가 정반대였던 것입니다.</p>
+<p>봉사 많이 하고 직분이 있다고 신앙이 살아 있는 것은 아닙니다. 주님 앞에서 어떤지가 중요합니다.</p></div></details><details class="qa" id="d3-q16">
+<summary><span class="qn">Q16</span><span class="qt">"온전한 것을 찾지 못하였노니"<span class="ref">(3:2)</span>는 무슨 뜻인가요? 더 열심히 하라는 말인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>"온전한"은 "꽉 채워진"이라는 뜻입니다. 겉모양, 껍데기는 있는데 속이 비었다는 말입니다.</p>
+<p>사데는 이미 바빴습니다. 그러니 "더 열심히 하라"는 말이 아닙니다.</p>
+<p>"내 하나님 앞에서" 비었다는 것이 문제입니다. 사람 앞에서는 꽉 찼는데, 하나님 앞에서는 비어 있었습니다.</p>
+<p>사역은 바쁜데, 정작 말씀은 비어 있었던 것입니다. 우선순위가 바뀐 것이지요.</p></div></details><details class="qa" id="d3-q17">
+<summary><span class="qn">Q17</span><span class="qt">그럼 무엇으로 채워야 하나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>3절이 답합니다. "네가 어떻게 받았으며 어떻게 들었는지 생각하고 지켜 회개하라."</p>
+<p>새로운 프로그램이 아니라, 처음 받은 말씀, 처음 들은 복음으로 다시 채우라는 것입니다.</p>
+<p>그리고 2절에는 소망이 있습니다. "그 남은 바 죽게 된 것을 굳건하게 하라."</p>
+<p>아직 남은 것이 있습니다. 완전히 꺼진 것이 아닙니다.</p>
+<p>말씀이 나를 다시 살려냅니다.</p></div></details><details class="qa" id="d3-q18">
+<summary><span class="qn">Q18</span><span class="qt">"도둑 같이 이르리니"<span class="ref">(3:3)</span>는 재림 날짜를 몰래 정해 두셨다는 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 이 말씀 앞에는 "만일 일깨지 아니하면"이라는 조건이 붙어 있습니다.</p>
+<p>도둑은 집주인이 잠들어 있을 때 옵니다. 깨어 있는 사람에게는 도둑이 될 수 없습니다.</p>
+<p>바울도 이렇게 말합니다. "형제들아 너희는 어둠에 있지 아니하매 그 날이 도둑 같이 너희에게 임하지 못하리니"<span class="ref">(살전 5:4)</span>.</p>
+<p>날짜를 계산하라는 말이 아니라, 방심하지 말고 깨어 있으라는 말씀입니다.</p>
+<p>깨어 있는 사람에게 주님은 도둑이 아니라, 기다리던 반가운 분으로 오십니다.</p></div></details><details class="qa" id="d3-q19">
+<summary><span class="qn">Q19</span><span class="qt">"몇 명"<span class="ref">(3:4)</span>이라는 말이 특별하다면서요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>원래 성경 말(헬라어)로 보면 "몇 명"은 "몇 이름"이라는 말입니다.</p>
+<p>죽은 교회 안에서도 주님은 옷을 더럽히지 않은 사람들을 한 사람 한 사람, 이름으로 아신다는 뜻입니다.</p>
+<p>교회 전체가 잠들어 있어도, 주님은 깨어 있는 한 사람을 놓치지 않으십니다.</p>
+<p>그리고 그들에게 "나와 함께 다니리니" 하십니다. 촛대 사이를 거니시는 예수님<span class="ref">(2:1)</span>이 그들과 함께 걸으십니다.</p></div></details><details class="qa" id="d3-q20">
+<summary><span class="qn">Q20</span><span class="qt">"흰 옷"<span class="ref">(3:4-5)</span>은 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>요한계시록에서 흰 옷은 깨끗함, 이김, 그리고 구원받은 사람의 모습을 나타냅니다.</p>
+<p>"옷을 더럽힌다"는 것은 세상과 타협해서 믿음이 얼룩지는 것을 말합니다.</p>
+<p>그런데 흰 옷은 내가 빨아서 만드는 옷이 아닙니다. 주님께 받는 옷입니다<span class="ref">(3:18)</span>.</p>
+<p>7장 14절은 이렇게 말합니다. "어린 양의 피에 그 옷을 씻어 희게 하였느니라."</p>
+<p>어린양 예수님이 흘리신 피가 우리의 옷을 희게 합니다.</p></div></details><details class="qa" id="d3-q21">
+<summary><span class="qn">Q21</span><span class="qt">"생명책에서 결코 지우지 아니하고"<span class="ref">(3:5)</span> — 그럼 잘못하면 지워질 수도 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>본문은 "결코 지우지 아니하고"입니다. 원래 성경 말로는 "절대로, 결코"라는 강한 부정이 두 번 겹쳐 있습니다.</p>
+<p>"잘못하면 지워진다"는 겁주는 말이 아니라, "끝까지 붙든 사람의 이름은 절대로 지워지지 않는다"는 약속입니다.</p>
+<p>그리고 이 책은 "어린 양의 생명책"입니다<span class="ref">(13:8; 21:27)</span>. 내 이름을 지키시는 분은 나를 위해 죽으신 어린양이십니다.</p>
+<p>사람들이 불러 주는 이름은 지워질 수 있지만, 예수님이 불러 주시는 이름은 결코 지워지지 않습니다.</p></div></details><details class="qa" id="d3-q22">
+<summary><span class="qn">Q22</span><span class="qt">"아버지 앞과 그의 천사들 앞에서 시인하리라"<span class="ref">(3:5)</span>는 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>"시인한다"는 "이 사람은 내 사람입니다" 하고 공개적으로 인정해 주신다는 뜻입니다.</p>
+<p>예수님은 복음서에서도 같은 약속을 하셨습니다. "누구든지 사람 앞에서 나를 시인하면 나도 하늘에 계신 내 아버지 앞에서 그를 시인할 것이요"<span class="ref">(마 10:32)</span>.</p>
+<p>아무도 내 이름을 기억해 주지 않아도, 예수님이 하나님 아버지 앞에서 내 이름을 직접 불러 주십니다.</p>
+<p>세상에서 이보다 더 큰 영광은 없습니다.</p></div></details></div>
+</section><section id="d3-s3" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">
+  <div class="sechead"><span class="secno">3</span><h2>오늘 우리에게</h2></div>
+  <div class="qas"><details class="qa" id="d3-q23">
+<summary><span class="qn">Q23</span><span class="qt">"나는 부족해요. 아직 해결하지 못한 죄가 있어요." 그래도 흰 옷을 입을 수 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>사데는 "죽은 자로다"라는 말을 들은 교회였습니다.</p>
+<p>그런데 주님은 거기서 멈추지 않으셨습니다. "일깨어 … 굳건하게 하라." 아직 끝나지 않았다는 말씀입니다.</p>
+<p>흰 옷은 내 힘으로 깨끗해져서 입는 옷이 아니라, 어린양의 피로 씻어 주시는 옷입니다<span class="ref">(7:14)</span>.</p>
+<p>부족하다고 느끼는 그 마음 그대로 주님께 나아가면 됩니다.</p>
+<p>주님이 내 이름을 부르시고, 나를 다시 살리십니다.</p></div></details><details class="qa" id="d3-q24">
+<summary><span class="qn">Q24</span><span class="qt">오늘 결단 "이름 없이 수고하는 한 사람을 알아봐 주기"는 어떻게 하면 될까요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>주님이 내 이름을 불러 주셨으니, 오늘은 나도 누군가의 이름을 불러 주는 하루입니다.</p>
+<p>아파트 경비원, 건물을 청소하시는 분, 택배 기사님, 그리고 늘 곁에 있어서 당연하게 여겼던 가족.</p>
+<p>그 한 사람에게 먼저 다가가 "수고하셨습니다. 고맙습니다." 하고 말해 보세요. 이름을 안다면 이름을 불러 드리면 더 좋습니다.</p>
+<p>예수님은 "자기 양의 이름을 각각 불러" 인도하시는 분입니다<span class="ref">(요 10:3)</span>. 그 예수님을 닮아 가는 하루입니다.</p>
+<blockquote>주님, 제 이름을 불러 주셔서 감사합니다. 오늘 저도 이름 없이 수고하는 한 사람을 알아봐 주겠습니다.</blockquote></div></details><details class="qa" id="d3-q25">
+<summary><span class="qn">Q25</span><span class="qt">두 교회의 편지가 오늘 나와 무슨 상관이 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>우리 안에도 두 교회가 다 있습니다.</p>
+<ul class="dots"><li>사랑은 많은데, "이 정도는 괜찮아" 하는 타협을 그냥 두는 두아디라</li><li>바쁘고 이름도 있는데, 하나님 앞에서는 속이 비어 있는 사데</li></ul>
+<p>그래서 편지마다 "귀 있는 자는 성령이 교회들에게 하시는 말씀을 들을지어다"<span class="ref">(2:29; 3:6)</span>로 끝납니다.</p>
+<div class="sharebox"><span>나눠 볼 질문</span><p>요즘 나는 "살았다 하는 이름"과 "하나님 앞에서 채워진 속" 가운데 어느 쪽에 더 마음을 쓰고 있나요? 내 안에서 다시 말씀으로 채워야 할 곳은 어디인가요?</p></div></div></details></div>
+</section>
+<div class="closing"><span class="tag">오늘 2-3장의 한 줄 정리</span><p class="verse">"내가 그 이름을 생명책에서 결코 지우지 아니하고 그 이름을 내 아버지 앞과 그의 천사들 앞에서 시인하리라"<cite>3:5</cite></p><p class="sum">긴 밤에는 새벽 별로 오시고, 죽은 자리에서는 내 이름을 부르시는 주님이 오늘 나를 다시 살리십니다.</p></div>
+<div class="ask"><p>더 궁금한 것이 있으면 <strong>구글폼 Q&amp;A</strong>에 남겨 주세요! 답변 드리겠습니다.</p>
+<a class="formbtn" href="https://forms.gle/s3MssGb4nLTBFV3DA" target="_blank" rel="noopener">궁금한 것 남기기</a></div>
+<nav class="pager" aria-label="다른 날"><a class="pn" href="#day2"><small>‹ 이전</small><b>2일차</b><span>요한계시록 2장 1-17절</span></a><a class="pn next" href="#day4"><small>다음 ›</small><b>4일차</b><span>요한계시록 3장 7-22절</span></a></nav>
+</main>
+</div>
+<div class="view" id="view-day4" data-view="day4" hidden style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
+<div class="bar">
+  <div class="wrap barrow">
+    <a class="back" href="#home">‹ 목록</a><span class="bartitle">4일차</span>
+    <button type="button" class="toggle-all">모두 펼치기</button>
+  </div>
+  <div class="wrap chips"><button type="button" data-go="d4-s1" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">빌라델비아 교회</button><button type="button" data-go="d4-s2" style="--c:#30B0C7;--ci:#0071A4;--cl:#7BD8E8">라오디게아 교회</button><button type="button" data-go="d4-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">일곱 편지를 마치며</button><button type="button" data-go="d4-s4" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">오늘 우리에게</button></div>
+</div>
+<div class="wrap dayhead">
+  <div class="hero">
+    <div class="icon"><div><b>4</b><span>일차</span></div></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 5일(목)</p><h1 class="dtitle">요한계시록 3장 7-22절</h1><p class="meta">질문 23개</p></div>
+  </div>
+  <p class="intro">요한계시록 3장 7-22절을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
+  <div class="card mapcard">
+  <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle class="past" cx="76" cy="241" r="5"/><text class="lbl" x="86" y="245" text-anchor="start">에베소</text><circle class="past" cx="51" cy="163" r="5"/><text class="lbl" x="61" y="167" text-anchor="start">서머나</text><circle class="past" cx="56" cy="49" r="5"/><text class="lbl" x="66" y="53" text-anchor="start">버가모</text><circle class="past" cx="140" cy="82" r="5"/><text class="lbl" x="150" y="86" text-anchor="start">두아디라</text><circle class="past" cx="166" cy="152" r="5"/><text class="lbl" x="176" y="148" text-anchor="start">사데</text><circle cx="227" cy="174" r="15" fill="#FF9500" opacity=".18"/><circle cx="227" cy="174" r="7" fill="#FF9500"/><text class="lbl lbl-today" x="227" y="203" text-anchor="middle" style="fill:#C93400">빌라델비아</text><circle cx="303" cy="257" r="15" fill="#30B0C7" opacity=".18"/><circle cx="303" cy="257" r="7" fill="#30B0C7"/><text class="lbl lbl-today" x="290" y="246" text-anchor="end" style="fill:#0071A4">라오디게아</text></svg>
+  <div><h2>오늘 읽은 교회: 빌라델비아, 라오디게아</h2><p class="cap">점선은 편지가 돌아간 길입니다. 에베소에서 시작해 라오디게아에서 끝납니다.</p><div class="legend"><div><span class="dot" style="background:#FF9500"></span>빌라델비아</div><div><span class="dot" style="background:#30B0C7"></span>라오디게아</div><div><span class="dot" style="background:#C7C7CC"></span>다른 교회</div></div></div>
+</div>
+</div>
+<main class="wrap daymain">
+<section id="d4-s1" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
+  <div class="sechead"><span class="secno">1 · 3:7-13</span><h2>빌라델비아 교회</h2></div>
+  <div class="qas"><details class="qa" id="d4-q1">
+<summary><span class="qn">Q1</span><span class="qt">빌라델비아는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>"빌라델비아"는 "형제 사랑"이라는 뜻입니다.</p>
+<p>일곱 교회 도시 가운데 늦게 세워진 작은 도시였고, 지진이 아주 잦았습니다.</p>
+<p>주후 17년에는 큰 지진으로 도시가 무너져, 신전 돌기둥만 남았다고 합니다.</p>
+<p>지진이 무서워서 많은 사람들이 성 밖에 나가 살았다는 기록도 있습니다.</p>
+<p>그 도시의 교회도 힘이 없고 사람도 적은 작은 교회였습니다.</p>
+<p>그런데 예수님은 이 교회에 책망을 한마디도 하지 않으십니다. 서머나와 함께 칭찬만 받은 교회입니다.</p></div></details><details class="qa" id="d4-q2">
+<summary><span class="qn">Q2</span><span class="qt">"다윗의 열쇠를 가지신 이"<span class="ref">(3:7)</span>는 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>이사야 22장 22절에서 왔습니다. "다윗의 집의 열쇠를 그의 어깨에 두리니 그가 열면 닫을 자가 없겠고 닫으면 열 자가 없으리라."</p>
+<p>옛날에 왕궁 열쇠를 가진 사람은 누가 왕 앞에 들어갈 수 있는지를 정했습니다.</p>
+<p>예수님이 그 열쇠를 가지셨다는 것은, 하나님 나라에 누가 들어가는지를 예수님이 정하신다는 뜻입니다.</p>
+<p>사람들이 "너는 안 돼" 해도, 예수님이 "들어오라" 하시면 그 문은 열립니다.</p></div></details><details class="qa" id="d4-q3">
+<summary><span class="qn">Q3</span><span class="qt">주님이 두신 "열린 문"<span class="ref">(3:8)</span>은 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>바로 뒤 9절을 보면, 빌라델비아 성도들은 예수님을 믿는다고 유대교 회당에서 쫓겨난 사람들이었습니다.</p>
+<p>사람들은 문을 닫았지만, 주님은 아무도 닫을 수 없는 하나님 나라의 문을 열어 두셨습니다.</p>
+<p>그러니 열린 문은 먼저, 내가 하나님 나라에 들어갈 자리가 주님 손에 확실히 열려 있다는 뜻입니다.</p>
+<p>이 문을 "복음을 전할 기회의 문"으로 읽는 분들도 많습니다. 바울도 같은 말을 그렇게 썼습니다<span class="ref">(고전 16:9)</span>.</p>
+<p>하나님 나라의 문이 내게 열려 있기 때문에, 주님이 여시는 기회의 문 앞에서도 두려워하지 않고 들어갈 수 있습니다.</p></div></details><details class="qa" id="d4-q4">
+<summary><span class="qn">Q4</span><span class="qt">"작은 능력"<span class="ref">(3:8)</span>이 칭찬인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>네, 칭찬입니다. "네가 작은 능력을 가지고서도 내 말을 지키며 내 이름을 배반하지 아니하였도다."</p>
+<p>주님은 "얼마나 큰 일을 했느냐"를 보지 않으셨습니다. 작은 힘으로도 말씀을 붙들었는지를 보셨습니다.</p>
+<p>큰 교회가 아니어도, 내 힘이 작아도 괜찮습니다. 말씀을 붙들고 주님 이름을 버리지 않는 것, 그것이 주님이 칭찬하시는 신앙입니다.</p></div></details><details class="qa" id="d4-q5">
+<summary><span class="qn">Q5</span><span class="qt">"사탄의 회당 … 네 발 앞에 절하게 하고"<span class="ref">(3:9)</span>는 무슨 뜻인가요? 유대인을 미워하라는 말인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 빌라델비아 교회를 괴롭히고 쫓아낸 그 지역의 일부 사람들을 두고 하신 말씀입니다<span class="ref">(2일차 Q13 참고)</span>.</p>
+<p>이사야 60장 14절에서 하나님은 이스라엘을 괴롭히던 사람들이 와서 "네 발 아래에 엎드려" 하나님의 백성임을 인정할 것이라고 약속하셨습니다.</p>
+<p>그 약속이 여기서는 회당에서 쫓겨난 작은 교회에게 주어집니다.</p>
+<p>교회 사람들을 높이라는 말이 아니라, 누가 하나님께 사랑받는 백성인지 드러난다는 뜻입니다.</p>
+<p>9절 끝이 이렇게 말합니다. "내가 너를 사랑하는 줄을 알게 하리라."</p></div></details><details class="qa" id="d4-q6">
+<summary><span class="qn">Q6</span><span class="qt">"시험의 때를 면하게 하리니"<span class="ref">(3:10)</span>는 휴거를 말하는 것 아닌가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>10절은 8절과 함께 읽어야 합니다.</p>
+<p>8절에서 주님은 "네가 작은 능력을 가지고서도 내 말을 지키며" 하고 칭찬하십니다.</p>
+<p>그리고 10절에서 "네가 … 지켰은즉, 내가 또한 너를 지켜" 하십니다. 네가 내 말을 지켰으니, 이제 내가 너를 지키겠다는 약속입니다.</p>
+<p>"면하게 하리니"는 원래 "시험의 때에 너를 지켜 주겠다"는 말입니다.</p>
+<p>같은 표현이 예수님의 기도에도 나옵니다. "내가 비옵는 것은 그들을 세상에서 데려가시기를 위함이 아니요 다만 악에 빠지지 않게 보전하시기를 위함이니이다"<span class="ref">(요 17:15)</span>.</p>
+<p>주님은 시험 전에 우리를 빼 가시는 분이 아니라, 시험 속에서 내 손을 놓지 않고 지키시는 분입니다.</p>
+<p>예수님은 분명히 다시 오십니다. 다만 날짜를 계산하거나, 재림을 두 번으로 나누는 것은 이 본문이 말하는 내용이 아닙니다. 1992년 휴거 소동도 그렇게 틀렸습니다.</p></div></details><details class="qa" id="d4-q7">
+<summary><span class="qn">Q7</span><span class="qt">"아무도 네 면류관을 빼앗지 못하게 하라"<span class="ref">(3:11)</span>는 면류관을 빼앗길 수도 있다는 건가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>여기서 면류관은 2일차에 본 "생명의 관"처럼, 끝까지 달린 사람이 받는 승리의 관입니다.</p>
+<p>주님은 바로 앞에서 "내가 속히 오리니"라고 하시고, "네가 가진 것을 굳게 잡아" 하십니다.</p>
+<p>겁을 주시는 말이라기보다, "거의 다 왔다, 지금까지 붙든 것을 놓지 마라" 하시는 격려입니다.</p>
+<p>마라톤 마지막 구간에서 "조금만 더!" 하고 외쳐 주는 응원과 같습니다.</p></div></details><details class="qa" id="d4-q8">
+<summary><span class="qn">Q8</span><span class="qt">"성전에 기둥이 되게 하리니 그가 결코 다시 나가지 아니하리라"<span class="ref">(3:12)</span>는 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>지진이 오면 모든 것이 무너지고 사람들은 성 밖으로 피해야 했던 빌라델비아였습니다. 무너진 도시에 신전 기둥만 남았던 곳입니다.</p>
+<p>그런 사람들에게 주님이 말씀하십니다. "너를 내 성전의 기둥으로 세우겠다. 다시는 밖으로 나가지 않게 하겠다."</p>
+<p>회당에서 쫓겨난 사람들, 지진에 집을 잃은 사람들에게 이보다 큰 위로는 없었을 것입니다.</p>
+<p>흔들리지 않는 자리, 다시는 쫓겨나지 않는 자리. 하나님 나라에서 우리가 받을 자리가 그렇습니다.</p></div></details><details class="qa" id="d4-q9">
+<summary><span class="qn">Q9</span><span class="qt">이름을 세 개나 기록하신다고요?<span class="ref">(3:12)</span></span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>12절 끝에 주님은 이기는 사람 위에 "하나님의 이름", "새 예루살렘의 이름", "나의 새 이름"을 기록하겠다고 하십니다.</p>
+<p>이름을 써 준다는 것은 "이 사람은 내 것이다" 하고 소속을 표시하는 것입니다.</p>
+<p>빌라델비아는 지진 뒤에 황제의 도움으로 다시 지어지면서, 도시 이름이 황제를 따라 바뀌기도 했습니다.</p>
+<p>사람이 붙여 준 이름은 바뀌지만, 주님이 써 주시는 이름은 바뀌지 않습니다.</p>
+<p>3일차에 본 "생명책의 이름"과 이어지고, 마지막 22장 4절 "그의 이름도 그들의 이마에 있으리라"에서 이루어집니다.</p></div></details></div>
+</section><section id="d4-s2" style="--c:#30B0C7;--ci:#0071A4;--cl:#7BD8E8">
+  <div class="sechead"><span class="secno">2 · 3:14-22</span><h2>라오디게아 교회</h2></div>
+  <div class="qas"><details class="qa" id="d4-q10">
+<summary><span class="qn">Q10</span><span class="qt">라오디게아는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>그 지역에서 손꼽히는 부자 도시였습니다.</p>
+<p>은행이 있는 금융 도시였고, 광택 있는 검은 양모로 만든 옷감과, 눈에 바르는 약(안약)으로 유명했습니다.</p>
+<p>주후 60년쯤 큰 지진이 났을 때는 로마의 도움 없이 자기 돈으로 도시를 다시 지었다고 합니다. 그만큼 자신만만한 도시였습니다.</p>
+<p>그래서 교회도 "나는 부자라 부요하여 부족한 것이 없다"<span class="ref">(3:17)</span>고 말했습니다.</p>
+<p>그런데 물이 귀했습니다. 먼 곳에서 수로로 물을 끌어와야 했는데, 그 물은 미지근하고 석회가 섞여 있었습니다.</p></div></details><details class="qa" id="d4-q11">
+<summary><span class="qn">Q11</span><span class="qt">예수님을 "아멘이시요"<span class="ref">(3:14)</span>라고 부르는 것은 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>"아멘"은 "예, 그렇습니다. 틀림없습니다"라는 뜻입니다.</p>
+<p>바울은 "하나님의 약속은 얼마든지 그리스도 안에서 예가 되니 … 우리가 아멘 하여"라고 했습니다<span class="ref">(고후 1:20)</span>.</p>
+<p>예수님은 하나님의 모든 약속에 "예"가 되시는 분, 말과 삶이 다르지 않은 분입니다.</p>
+<p>이도 저도 아닌 미지근한 교회 앞에, "예"가 분명한 주님이 서 계십니다.</p></div></details><details class="qa" id="d4-q12">
+<summary><span class="qn">Q12</span><span class="qt">"차든지 뜨겁든지 하기를 원하노라"<span class="ref">(3:15)</span> — 그럼 차가운 신앙이 미지근한 것보다 낫다는 건가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 여기서 "차가운 것"은 "믿음이 없는 것"이 아닙니다.</p>
+<p>라오디게아 이웃 도시 히에라볼리에는 뜨거운 온천이, 골로새에는 시원한 샘물이 있었습니다.</p>
+<div class="waters">
+  <div class="w" style="--t:#D70015"><i>뜨거움</i><b>히에라볼리</b><span>뜨거운 온천</span><strong>아픈 몸을 낫게</strong></div>
+  <div class="w" style="--t:#0040DD"><i>차가움</i><b>골로새</b><span>시원한 샘물</span><strong>지친 사람에게 새 힘</strong></div>
+  <div class="w" style="--t:#6C6C70"><i>미지근함</i><b>라오디게아</b><span>먼 길 흘러온 물</span><strong>약효도, 시원함도 없음</strong></div>
+</div>
+<p>뜨거운 물은 아픈 몸을 낫게 하고, 차가운 물은 지친 사람에게 새 힘을 줍니다. 둘 다 쓸모가 있습니다.</p>
+<p>그런데 라오디게아의 물은 먼 길을 흘러와 미지근하고 석회가 섞여, 약효도 없고 시원하지도 않았습니다.</p>
+<p>그러니 미지근함은 온도의 문제가 아니라 쓸모의 문제입니다.</p>
+<p>물은 사람을 살리라고 있고, 교회도 아픈 사람을 낫게 하고 지친 사람에게 힘을 주라고 있습니다. 미지근한 교회는 아무도 살리지 못합니다.</p></div></details><details class="qa" id="d4-q13">
+<summary><span class="qn">Q13</span><span class="qt">"내 입에서 너를 토하여 버리리라"<span class="ref">(3:16)</span>면 구원을 잃는다는 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>미지근한 물을 마시다 뱉어 내듯, 사람을 살리지 못하는 신앙을 주님이 견디지 못하신다는 아주 강한 경고입니다. 가볍게 들으면 안 됩니다.</p>
+<p>그런데 이어지는 말씀을 보면 주님의 마음이 보입니다.</p>
+<p>"무릇 내가 사랑하는 자를 책망하여 징계하노니"<span class="ref">(19절)</span>, "볼지어다 내가 문 밖에 서서 두드리노니"<span class="ref">(20절)</span>.</p>
+<p>버리시려는 말씀이 아니라, 사랑하시기 때문에 "돌아오라" 하시는 말씀입니다.</p></div></details><details class="qa" id="d4-q14">
+<summary><span class="qn">Q14</span><span class="qt">"부족한 것이 없다"<span class="ref">(3:17)</span>는 게 왜 문제인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>부족한 것이 없으니 주님이 필요 없었습니다. 주님께 받은 것이 없으니 남에게 줄 것도 없었습니다.</p>
+<p>주님은 그 교회를 이렇게 보셨습니다. "네 곤고한 것과 가련한 것과 가난한 것과 눈 먼 것과 벌거벗은 것을 알지 못하는도다."</p>
+<p>부자 도시에 "가난하다", 옷감으로 유명한 도시에 "벌거벗었다", 안약으로 유명한 도시에 "눈멀었다" 하십니다.</p>
+<table class="contrast"><thead><tr><th>도시가 자랑하던 것</th><th>주님이 보신 모습</th></tr></thead><tbody>
+<tr><td>은행이 있는 부자 도시</td><td>가난하다</td></tr>
+<tr><td>유명한 검은 양모 옷감</td><td>벌거벗었다</td></tr>
+<tr><td>유명한 안약</td><td>눈멀었다</td></tr></tbody></table>
+<p>제일 자신 있던 것이 제일 가난한 곳이었습니다.</p>
+<p>오늘 우리가 "나는 괜찮아요. 주님 안 도와주셔도 돼요" 하는 순간이 바로 라오디게아의 자리입니다.</p></div></details><details class="qa" id="d4-q15">
+<summary><span class="qn">Q15</span><span class="qt">"내게서 금을 사고, 흰 옷을 사고, 안약을 사라"<span class="ref">(3:18)</span>는 돈을 내라는 건가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>아닙니다. 이사야 55장 1절에서 하나님은 "돈 없는 자도 오라 … 돈 없이, 값 없이 와서 … 사라"고 하셨습니다. 값없이 사는 것, 곧 은혜로 받는 것입니다.</p>
+<p>중요한 말은 "내게서"입니다. 은행에서, 옷감 시장에서, 약방에서가 아니라 "나에게서" 받으라는 것입니다.</p>
+<ul class="pairs"><li><b>불로 연단한 금</b><span>시련 속에서 순수해지는 참 믿음</span></li><li><b>흰 옷</b><span>내 부끄러움을 덮어 주시는 예수님의 의</span></li><li><b>안약</b><span>내 진짜 모습과 주님을 보게 하는 눈</span></li></ul>
+<p>내가 가진 것으로는 채울 수 없는 것을, 주님은 거저 주십니다.</p></div></details><details class="qa" id="d4-q16">
+<summary><span class="qn">Q16</span><span class="qt">"내가 사랑하는 자를 책망하여 징계하노니"<span class="ref">(3:19)</span> — 사랑하는데 왜 책망하시나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>부모는 남의 아이가 잘못하면 그냥 지나가지만, 내 아이가 잘못하면 꾸짖습니다. 사랑하기 때문입니다.</p>
+<p>성경도 같은 말을 합니다. "주께서 그 사랑하시는 자를 징계하시고"<span class="ref">(히 12:6; 잠 3:12)</span>.</p>
+<p>칭찬이 하나도 없던 라오디게아에게도 주님은 "내가 사랑하는 자"라고 하십니다.</p>
+<p>빌라델비아도 "내가 너를 사랑하는 줄"<span class="ref">(9절)</span>, 라오디게아도 "내가 사랑하는 자"<span class="ref">(19절)</span>.</p>
+<p>작은 교회도, 미지근한 교회도 모두 주님의 사랑 안에 있습니다.</p></div></details><details class="qa" id="d4-q17">
+<summary><span class="qn">Q17</span><span class="qt">"내가 문 밖에 서서 두드리노니"<span class="ref">(3:20)</span>는 믿지 않는 사람에게 하시는 말씀 아닌가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>전도할 때 많이 쓰는 구절이라 그렇게 생각하기 쉽습니다. 물론 이 말씀으로 예수님을 만나는 분들도 있습니다.</p>
+<p>그런데 본문에서 이 말씀을 들은 사람은 라오디게아 교회, 바로 앞 절에서 "내가 사랑하는 자"라고 하신 교회입니다.</p>
+<p>교회 안에 계셔야 할 주님이 교회 문 밖에 서 계신 것입니다.</p>
+<p>그런데도 주님은 떠나지 않으십니다. "서서"는 떠나지 않고 서 계신 모습이고, "두드리노니"는 지금도 두드리신다는 뜻입니다.</p>
+<p>그리고 문을 부수고 들어오지 않으십니다. "문을 열면" 들어오십니다.</p></div></details><details class="qa" id="d4-q18">
+<summary><span class="qn">Q18</span><span class="qt">"그와 더불어 먹고"<span class="ref">(3:20)</span>는 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>우리는 가까운 사람과 밥을 먹지요. "언제 밥 한번 먹자."</p>
+<p>주님이 그렇게 말씀하십니다. 나무라러 오시는 것이 아니라, 같이 밥 먹으러 오십니다.</p>
+<p>부활하신 예수님도 엠마오의 두 제자와 함께 떡을 떼실 때, 그들의 눈이 열려 예수님을 알아보았습니다<span class="ref">(눅 24:30-31)</span>.</p>
+<p>식탁에 함께 앉는다는 것은, 멀어졌던 관계가 다시 가까워진다는 뜻입니다.</p></div></details><details class="qa" id="d4-q19">
+<summary><span class="qn">Q19</span><span class="qt">"내 보좌에 함께 앉게 하여 주기를"<span class="ref">(3:21)</span>은 무슨 뜻인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>문 앞에서 시작된 이야기가 식탁을 지나 보좌에서 끝납니다.</p>
+<div class="flow" aria-label="문, 식탁, 보좌">
+  <div><b>문</b><span>문을 열어 드리면</span></div><i>›</i>
+  <div><b>식탁</b><span>함께 먹고</span></div><i>›</i>
+  <div><b>보좌</b><span>함께 앉는다</span></div>
+</div>
+<p>문을 열어 드리면 주님이 들어와 함께 먹으시고, 끝까지 이기는 사람은 주님과 함께 보좌에 앉습니다.</p>
+<p>예수님은 "내가 이기고 아버지 보좌에 함께 앉은 것과 같이" 하겠다고 하십니다. 예수님이 이기신 승리를 우리와 나누시겠다는 약속입니다.</p>
+<p>그리고 바로 다음 4장에서, 요한은 하늘의 열린 문으로 들어가 그 보좌를 보게 됩니다.</p></div></details></div>
+</section><section id="d4-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+  <div class="sechead"><span class="secno">3</span><h2>일곱 편지를 마치며</h2></div>
+  <div class="qas"><details class="qa" id="d4-q20">
+<summary><span class="qn">Q20</span><span class="qt">라오디게아는 "마지막 시대의 교회"라던데요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>일곱 교회를 교회 역사의 일곱 시대로 나누고, 라오디게아를 "지금 마지막 시대"로 보는 해석이 있습니다.</p>
+<p>그러나 일곱 교회는 요한 당시 소아시아에 실제로 있던 교회들입니다<span class="ref">(1:11)</span>.</p>
+<p>그리고 편지마다 "귀 있는 자는 성령이 교회들에게 하시는 말씀을 들을지어다"<span class="ref">(3:13, 22)</span>로 끝납니다. 한 교회에 하신 말씀을 모든 교회가 들으라는 뜻입니다.</p>
+<p>라오디게아는 어느 한 시대가 아니라, 어느 교회에나, 어느 마음에나 있을 수 있습니다.</p></div></details><details class="qa" id="d4-q21">
+<summary><span class="qn">Q21</span><span class="qt">일곱 편지를 한 번에 정리하면 무엇인가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>일곱 편지에는 늘 같은 세 가지가 있었습니다.</p>
+<ol class="nums"><li><span>예수님이 그 교회에 꼭 필요한 모습으로 찾아오십니다. (촛대 사이를 거니시는 이, 죽었다가 살아나신 이, 다윗의 열쇠를 가지신 이, 아멘이신 이…)</span></li><li><span>"내가 안다." 수고도, 가난도, 사는 자리도, 숨긴 속마음도 다 아십니다.</span></li><li><span>"이기는 자에게는." 끝까지 주님을 붙드는 모든 사람에게 약속을 주십니다.</span></li></ol>
+<p>칭찬받은 교회도, 책망받은 교회도, 일곱 교회 모두 예수님 손안에 있었습니다<span class="ref">(1:20)</span>. 오늘 우리 교회도 그렇습니다.</p></div></details></div>
+</section><section id="d4-s4" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">
+  <div class="sechead"><span class="secno">4</span><h2>오늘 우리에게</h2></div>
+  <div class="qas"><details class="qa" id="d4-q22">
+<summary><span class="qn">Q22</span><span class="qt">오늘 결단 "말씀 한 절 먼저 읽기"는 어떻게 하면 될까요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><p>일하시는 분은 일을 시작하기 전에, 학생은 공부를 시작하기 전에, 집에 계신 분은 하루를 시작하기 전에 말씀 한 절을 먼저 읽어 보세요.</p>
+<p>세상 소리보다 주님 음성을 먼저 듣는 것, 그것이 예수님께 문을 여는 것입니다.</p>
+<p>그리고 기도를 이렇게 시작해 보세요. "주님, 저는 주님이 필요합니다."</p>
+<p>"나는 괜찮아"라는 마음을 내려놓고, "주님이 필요합니다"라고 고백하는 것이 라오디게아에서 돌아서는 첫걸음입니다.</p></div></details><details class="qa" id="d4-q23">
+<summary><span class="qn">Q23</span><span class="qt">나눠 볼 질문</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
+<div class="ans"><ul class="dots"><li>사람들이 닫은 문 앞에서 낙심했던 적이 있나요? 그때 주님이 열어 두신 문은 무엇이었나요?</li><li>요즘 내가 "나는 괜찮아, 부족한 것 없어" 하며 문을 닫아 둔 곳은 어디인가요?</li><li>오늘 주님께 문을 열어 드린다면, 무엇부터 하고 싶나요?</li></ul></div></details></div>
+</section>
+<div class="closing"><span class="tag">오늘 3장의 한 줄 정리</span><p class="verse">"볼지어다 내가 문 밖에 서서 두드리노니 누구든지 내 음성을 듣고 문을 열면 내가 그에게로 들어가 그와 더불어 먹고 그는 나와 더불어 먹으리라"<cite>3:20</cite></p><p class="sum">닫힌 문 앞에서는 문을 열어 주시고, 내가 닫은 문 앞에서는 지금도 두드리시는 주님이 오늘 나와 함께 밥 먹자 하십니다.</p></div>
+<div class="ask"><p>더 궁금한 것이 있으면 <strong>구글폼 Q&amp;A</strong>에 남겨 주세요! 답변 드리겠습니다.</p>
+<a class="formbtn" href="https://forms.gle/s3MssGb4nLTBFV3DA" target="_blank" rel="noopener">궁금한 것 남기기</a></div>
+<nav class="pager" aria-label="다른 날"><a class="pn" href="#day3"><small>‹ 이전</small><b>3일차</b><span>요한계시록 2장 18절-3장 6절</span></a><span></span></nav>
+</main>
+</div>
+
+<footer><div class="wrap">
+<div class="foothome">
+<a class="home" href="https://sungeunch.com/" target="_top" aria-label="성은교회 홈페이지로 돌아가기">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M3 10.5 12 3l9 7.5"/>
+<path d="M5 9.5V20h14V9.5"/>
+<path d="M10 20v-5.5h4V20"/>
+</svg>
+<span>성은교회 홈페이지</span>
+</a>
+</div>요한계시록에 폭싹 빠졌수다 · 성경공부 프로젝트</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btns=document.querySelectorAll('.seg button');
+  function setFs(c){
+    root.classList.remove('fs-l','fs-xl'); if(c) root.classList.add(c);
+    btns.forEach(function(b){b.setAttribute('aria-pressed', b.dataset.fs===c ? 'true':'false');});
+    try{localStorage.setItem('rev-fs',c);}catch(e){}
+  }
+  var saved=''; try{saved=localStorage.getItem('rev-fs')||'';}catch(e){}
+  if(saved==='fs-l'||saved==='fs-xl') setFs(saved);
+  btns.forEach(function(b){b.addEventListener('click',function(){setFs(b.dataset.fs);});});
+
+  var views=document.querySelectorAll('.view');
+  function show(){
+    var h=(location.hash||'').replace('#','');
+    var target=document.querySelector('.view[data-view="'+h+'"]')||document.getElementById('view-home');
+    views.forEach(function(v){v.hidden=(v!==target);});
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',show); show();
+
+  document.querySelectorAll('.view').forEach(function(v){
+    var tog=v.querySelector('.toggle-all'); if(!tog) return;
+    var all=v.querySelectorAll('details.qa');
+    function sync(){var anyClosed=[].some.call(all,function(d){return !d.open;}); tog.textContent=anyClosed?'모두 펼치기':'모두 접기';}
+    tog.addEventListener('click',function(){var open=tog.textContent==='모두 펼치기'; all.forEach(function(d){d.open=open;}); sync();});
+    all.forEach(function(d){d.addEventListener('toggle',sync);});
+    sync();
+  });
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click',function(){var t=document.getElementById(b.dataset.go); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});});
+  });
+})();
+</script>
