@@ -6,6 +6,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@noonnu/gmarket-sans-medium@0.1.0/index.css">
 <style>
 /* Layout: one link for the whole series — cover (progress + day list) and one view per day, routed by #dayN.
    Palette: Seongeun Church homepage sky blue on light grey, iOS-style grouped white cards. */
@@ -25,9 +27,10 @@ html.fs-xl .icon{width:4rem;height:4rem}
 html.fs-xl .icon b{font-size:1.7rem}
 html.fs-xl .ans{padding-left:1.1rem}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+body{word-break:keep-all;overflow-wrap:break-word}
+body{font-weight:700} /* 프리텐다드 7번(Bold) — 목사님 요청 */
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:rgba(245,246,248,.94)}
 .wrap{max-width:44rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-body{word-break:keep-all;overflow-wrap:break-word}
 h1,h2,h3{text-wrap:balance;margin:0}
 p{margin:0}
 .card{background:var(--card);border-radius:14px}
@@ -192,9 +195,95 @@ blockquote cite{display:block;font-family:var(--f-body);font-style:normal;font-s
 .pn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-align:center}
 @media (prefers-reduced-motion:reduce){summary .chev{transition:none}html{scroll-behavior:auto}}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* ===== 성은교회 홈페이지 스타일 맞춤 (글꼴·제목 막대·둥근 아이콘·파랑 강조) ===== */
+:root{--f-display:"GmarketSansMedium","Pretendard",-apple-system,"Apple SD Gothic Neo",sans-serif}
+body::before{background:#fff}
+.hl{font-style:normal;color:var(--brand)}
+.topbar{background:#fff;border-bottom:1px solid var(--hair)}
+.util{padding-block:.55rem}
+.logo{display:block;line-height:0;flex:none}
+.logo img{height:34px;width:auto}
+.utilr{display:flex;align-items:center;gap:.5rem}
+@media (max-width:440px){.util .home span{display:none}.util .home{padding:.45rem .55rem}}
+.series,.dtitle,.subtitle,.listh,.sechead h2,.feature .ftitle,.closing .tag,.bartitle,.mini b,.icon b,.pn b{font-family:"Pretendard",var(--f-body);font-weight:800}
+.series{font-weight:900}
+.series{letter-spacing:-.04em;line-height:1.28}
+.dtitle{letter-spacing:-.03em}
+.cover{background:#fff;border:1px solid var(--hair)}
+.cover::after{content:"";position:absolute;width:16rem;height:16rem;border-radius:50%;right:-6rem;top:-5rem;background:radial-gradient(circle at 40% 62%,rgba(125,182,222,.5),rgba(224,231,240,.7) 52%,rgba(224,231,240,0) 71%);pointer-events:none}
+.cover::before{content:"";position:absolute;width:13rem;height:13rem;border-radius:50%;left:-7rem;bottom:-8rem;border:1px solid var(--hair);pointer-events:none}
+.cover>*{position:relative;z-index:1}
+.subtitle{color:var(--ink)}
+.sechead h2,.listh{border-left:4px solid var(--brand);padding-left:.6rem;line-height:1.3}
+.listh{padding-bottom:0;margin:0 .25rem .7rem}
+.secno{color:var(--brand-ink)}
+.icon,.mini{border-radius:50%;background:var(--brand-soft);color:var(--brand);box-shadow:none}
+.icon span,.mini small{color:var(--brand-ink)}
+.feature{background:#fff;color:var(--ink);border:1px solid var(--hair);box-shadow:0 2px 10px rgba(38,124,185,.08);position:relative;overflow:hidden}
+.feature::after{content:"";position:absolute;width:11rem;height:11rem;border-radius:50%;right:-4rem;bottom:-5rem;background:radial-gradient(circle,rgba(125,182,222,.35),rgba(224,231,240,0) 70%);pointer-events:none}
+.feature>*{position:relative;z-index:1}
+.feature .ftag{justify-self:start;color:var(--brand-ink);background:var(--brand-tint);border-radius:999px;padding:.15rem .7rem;opacity:1}
+.feature .ftitle{color:var(--ink)}
+.feature .fsum{color:var(--sub);opacity:1}
+.feature .fgo{justify-self:start;background:var(--brand);color:#fff;border-radius:999px;padding:.5rem 1.1rem;font-size:.88rem}
+.closing{background:linear-gradient(150deg,#1D6AA5 0%,#267CB9 100%)}
+.qn{background:var(--brand)}
+blockquote{background:var(--brand-tint)}
+blockquote cite,.pairs li b,.contrast td:last-child,.flow b{color:var(--brand-ink)}
+.dots li::before,.nums li::before{background:var(--brand)}
+/* 질문과 답 구분: 질문은 더 굵고 크게, 답은 한 단계 작게 */
+.qt{font-weight:800;font-size:1.04rem}
+.ans{font-size:.92rem;color:#333333;font-weight:500} /* 답은 프리텐다드 5번(Medium) */
+
+/* ===== 큰 글씨로 한 장씩 보기 (D형) ===== */
+.chips .bigchip{flex:none;font-family:var(--f-body);font-size:.84rem;font-weight:800;color:#fff;background:var(--brand);border:1px solid var(--brand);border-radius:999px;padding:.3rem .85rem;cursor:pointer}
+.bigbtn{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.85rem;width:100%;text-align:left;font-family:var(--f-body);background:#fff;border:2px solid var(--brand);border-radius:16px;padding:.8rem 1rem;cursor:pointer;color:var(--ink)}
+.bigbtn b{width:2.6rem;height:2.6rem;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:1.35rem;font-weight:900}
+.bigbtn strong{display:block;font-size:1.05rem;font-weight:800}
+.bigbtn small{display:block;font-size:.82rem;color:var(--sub);font-weight:500}
+.bigbtn i{font-style:normal;font-size:1.5rem;color:var(--brand);font-weight:700}
+.bigbtn:focus-visible,.chips .bigchip:focus-visible{outline:3px solid var(--brand-soft);outline-offset:2px}
+.chips .bigchip:hover{background:var(--brand-ink);border-color:var(--brand-ink);color:#fff}
+.reader{position:fixed;inset:0;z-index:50;background:#fff;display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+.r-top{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:.8rem;padding:12px 16px 8px}
+.r-close{font-family:var(--f-body);font-size:18px;font-weight:800;color:var(--brand);background:var(--brand-tint);border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
+.r-prog{display:grid;gap:6px}
+.r-count{font-size:17px;font-weight:800;color:var(--brand);text-align:right}
+.r-bar{height:8px;border-radius:99px;background:var(--fill);overflow:hidden}
+.r-bar i{display:block;height:100%;width:0;background:var(--brand);border-radius:99px;transition:width .25s}
+.r-body{flex:1;overflow-y:auto;min-height:0;padding:14px 20px 24px;-webkit-overflow-scrolling:touch}
+.r-sec{font-size:15px;font-weight:800;color:var(--brand-ink);margin:0 0 6px}
+.r-q{font-size:27px;font-weight:900;line-height:1.45;letter-spacing:-.02em;margin:0;color:var(--ink)}
+.r-q .rn{color:var(--brand);margin-right:.3em}
+.r-q .ref{font-size:.7em}
+.r-a{margin-top:18px;font-size:22px;line-height:1.8;font-weight:500;color:#2a2a2a;display:grid;gap:12px}
+.r-a .ref{font-size:.8em}
+.r-a blockquote{font-size:21px}
+.r-a .pairs li,.r-a .contrast{font-size:19px}
+.r-end{display:grid;gap:14px}
+.r-end .tag{font-size:16px;font-weight:800;color:var(--brand-ink)}
+.r-end .verse{font-family:var(--f-verse);font-size:24px;line-height:1.75;font-weight:700;margin:0}
+.r-end .verse cite{display:block;font-family:var(--f-body);font-style:normal;font-size:16px;color:var(--brand-ink);margin-top:6px}
+.r-end .sum{font-size:21px;line-height:1.75;font-weight:500;margin:0}
+.r-nav{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;padding:12px 16px 16px;border-top:1px solid var(--hair);background:#fff}
+.r-nav button{font-family:var(--f-body);font-size:20px;font-weight:800;border-radius:18px;padding:18px 8px;cursor:pointer;border:0}
+.r-prev{background:var(--fill);color:var(--ink)}
+.r-next{background:var(--brand);color:#fff}
+.r-nav button:disabled{opacity:.35;cursor:default}
+.r-nav button:focus-visible,.r-close:focus-visible{outline:3px solid var(--brand-soft);outline-offset:2px}
+body.reading{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.r-bar i{transition:none}}
 </style>
 
-<div class="wrap util">
+<header class="topbar"><div class="wrap util">
+  <a class="logo" href="https://sungeunch.com/" target="_top" aria-label="한국기독교장로회 성은교회 홈페이지"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKkAAAAqCAYAAADI8XtZAAAQQElEQVR4nO2de5gW1X3HP7/ZcV03SMiGBwUX3FjLY6kSqsTES40SjdEKamqNtyCUAO9AvaQGjSKxhFhqiW2s4rywNeK1mtZoTOSi1hCqxFjjLchjCMpmRYKIFPfZIK678+sfv3nZ9513Zt7L7iKsfJ9nn905c87vnJn5nfO7nrNCP4LneZOAm4Cv+b6/0vM8B/CB3/m+//2ENqNE5OtJNFX1P33ffyFanslkakXkcsDNK97m+/5iz/PmAgN93/9mQp+jReTClD7v8n3/tZg+3bDP2oSmW3zf/2FCn5eLyNBIPw8DY4FjgJm+7+9M6PPvASehzxbf9x9Iepaw7/8F2n3fPyW8Pgc4F5jj+35rWlsofMF7LTzP+zsRuUlVXRGpVdUVM2bM6FTV04GLgKeBWCYFGlX1opjyOhEZIiK/BYqYFGOUWXS/w4FAK7AYOAsYDMQyKTAK+LaqtgLbY+4vA4qYNOzrKqA+5t5AYA0Qy6TAX6nqKBFpVNV2YBvwG+CLwATgirhGIuIC1yTQHCQiK4FYJvU87yfAYcBIIPA87zfAGhFZB0xU1Zuxd5aKfsGkwJOqOhM4TlWHAa+p6svAehFBVWszmcwgoC2bzQb5DX3ffxw4NEownO0Pq2pnXIfZbLZ92rRpQ0P61NTU/BoYUOG4bwGWx5RvSuhz59SpU3eNVUR23aupqfltWke+75/ueV4TsAFY6fv+eADP887GJlyz53m3+L7/bKTdTs/z/iRKL1wQUvsEnsGYcBMQAOuADar6qfyxl0K/YFLf91/zPG8BtoJ1AGdiK+f9qoqIjAPeBT5N/MoVC1VdA7yRdH/x4sW7GN7zvHqgSFyWwM0icnM4RvJ+XwzcH9egubk5dtJ4nhfElUcwM/w9zvO8L0QYchQwKNogk8nUAe+KiAPsGmOZTLYEWCYiR4dtG4B5InJZOY1z6BdM6nneYSJylqrerqpXiMgTwDRVneM4To7ZFqjqjpi2jwFNKeRvyWQyJ2Sz2Y6kCuGHbARWljPecDzjw7+/JCJXqur3gF+pKqRMjHDM/wO0A/cAC4CvYTpjLAOHbV4ExqjqUuBo4BnP824Ib3cAJ/i+354y5udE5JbcZAJyE2pzylBnAker6nTAFZGFqjotx+jlol8wqapuwXSsc0SkDjMG1ohIEL7Qjb7v353Q/BkRWRfWawLOAZ7E9DuwD5i6SoUrdT0m3lIxffp0R0R+jums+bg+7+9NwCEpZIaE/dWLyDBVrcN00o0pbTZiE/UBERkBeJhU2Rrei33GPGYarKpfzL8XvrMtwFMJfeb4ayvghvX3r4RB84ns1chms+2e552GGTKNmPFwUx6TpmEJMDZcFY7BmHRdyEio6gvZbDZthRoIzMdE/b2lOlu0aFHged4UYESuLGaM60vRiWAQpg8nGiGqeraIXC0iG4BhdK+864EbfN8vkjJhu0BEchP2eEwtaAdawrI0w6cZM1wfCq/Xh2VTy3imXegXTBpiOmalHur7/laA0AU1iwRDJMSxqvpQ3nUAZFQ1IyKOiEzGGLmws+nTHcdxxmHidjRwRTnulBAHi8itSTdVdXyZdHJoA4aqaqJOLCITRGR+KO5nY4zWAFwG3ON53vO+76+LtgvVnM8CeJ5XC7wDrPZ9/4wyxtUKHAW8DKCqf4FJpiEfO3EfohaoA873PC9ft9pB+nMuVdWhMS/ty5jOF4uampohqroCE2VTkvyTCXhEVV+JKR8PXJfUyPO8C4A5mFoSAPPCVbgZaBcRPM+b6fv+ypjm9WHdrRjz7Ah/coZkrO/V87wZdBtcYCv2iZ7nvZpXdrHv+y/ltwv19NdDuoMAwlW8DhhQhoTbhf7EpGAibGGMct8C/Diuge/7HZheVQDP81K9AKraBvwNsDxGVO4kxdL3fX9LQp+j8sceg02YcbYyZWjbEsr/C/OJXgJMjNS/xvf9NbGtTKzn9xfXd1u0QFU7Q2kRDQJsx1bXiZTQ9XOoTIPdgzF16lRXVWMnnYgEzc3NidZ5HEKX0sGquiWbzSZavXHIZDKOiDi+7yfqsgntBojIEFXdnM1mY3XEniKTydSJSBNmeLWpakuazt0XCNWwst9PxUy6352tterUDO5SbVBHXAm0swa21Xd1bWmbcuhufdh9+HigLCZ17mxtUJEJCqehjAYGgeYt4xJgy/gLjrDCUV3aOXlE2U7zfdiHNKQyqbukdXCXyhUKF4DGxYuTyLYj3FMLt3VMGr6PWT/ecCi2fSpSvRKZ1Fny5nmBMhe0KFRWAfmtjjA7mDT8Z9XTKMIQzELMYScxRkgeHODkSNk60h3f1aAeG1sDZgG7mGHQgRkWW8NxlmUs9CPMABZGyg7EXGBxaMKSUnLoLGLSurs3uTuDrrmoTuqNEYIEjuAf0PXBP/1xyuG98YGWAV/Ju14OpPns6oH/o9DF4gHZHo7DxXIEzsWc3E0kp9CBMWc7Fsl6CvgPYG0Px1AH/LKHNOJwNmVkJ5WJSpn0emBe3nVbwTJcc8fv3A+C4GZUz+ulAQLqBMrMHU7tgUPufWv2lksO6Q8ryReAO4EjKmjjYKHL48Ofb2NJJDNJ/mDl0BxTZds01JWuEouBFLuc4tTEQRSrADtIUAMKKgY1B3xLNehFBu2GwsStXfoWcFtf0N+NOBJ4gsrT8qJwMV/hwZgk6A+T9wng2DLqvRlTdhkJvLGLSWXJxpPCnMw+QxDorP3ufuvZDyce8nwPyERneb6IdbHYfT7qSc4qrwZzKWbQjcCjwKuY3tlOd0ZSLuIyAvg8pqrkP8OXMbWhWr09LQupHNQRk6K3J8EFOODOt+re12B+oVupL6BuZxDMb7h30xnbLhlWrU91SOT64MjfG6qkWy5Ojlwvx/TScnNJjwR+RaEYPJ3qmHQHMLRkrXScCTzWQxp9ChfgfdHzUW3aHR2q6qi2rmACCWHKEqgHDo+UHY7pQkWhuT5ALcU61i+oLNl5LRbezH+OCtx7ezQeBJ4tWSsecbkMALg1za87XejkKglXhU7VyVTHpGdSbEHXYhn5sZnsvYwOzOodmVc2CxO5j5Ce9e9grpVZFE+013txjB8l/iVyPQBTbz6HScAA+D0W/19NSpJ2Ptxgv/1HoTqydNVehDKm5q6NTV2XNrZU0MoFrk24Nwdj+nbg32LaZeg9vfQObEdqDg2Ypb8IWyGjOmkuIXkYxaoK2Cq8OybY7oSDuZ7mYu8nDmsxz8bKUsRchROh/LSp3oE6ICfSnThbDuZj2x7icARwH3Axxbse64FvkO7DrAQ/AE7AclfzUYv5SpsqoNWBJQC39MK49iT4wLQSdUZh3oALsQytRDigR/XSwCqClt/vYOAu4Fsl6n0VM0i+Qu9a81F0AH+NBQSKkoQroPEz4DjKyOavAA3Y+8r95HRdN1I+mPQ0zZ64wy4gnkG3Y4ZePlxMCkU9MkWVRqRV6Cuopg8Me8ELsO0HURdJgO1v/1sKV8jRWETqDezAg77KG+jEIlaLMWv9eODPsZc9mO6wKJg4b8PUgPVYlvoq0kO51eJlTK3IYRamJ47BJnA+PotFv+ImdE+y2aJnDWzDNgquxL7VlVhEKdfvAOw7fjeJoOvCABXBRH65mXu661dXmS2KKCgDS1QZiOk1UXRgL+J24CeYmI/qPYdRfdSkEgSYVZpome5mOCRLkaTyODWoogSQPAygOAI2F9vYCMb8/wicApyaV+eENKLuOxcMK2LNnIYqMX93lyk//sFqphzUVPYTRFCNSHkBU7Zzbo7l2Ao2H8s478udBg1An0TjQmyieod+TxANTHRSLJYroRX9BnEnsbxCIZOmLljum/c9v73rw/LXw6bTRvLJzzTwUvZZfv/gi3B5U9ltCyCJ2xyi6MBEhY9FdaLMvRmYDNyAhRnHY2K/t9GIWfB9hVV8NEwalUKpW19KoA37XvlS7ATg8bxrBzgp0i5V9XGfvmFFSxAE5cRbaTp1JKOnHMuGZa/xy/n/zcDPF52+UglKZdlsxxhuNcn7dsDE1UCMeR/ADJFcEjbYynA/heKuWoOnPyIasdpO9Uy6A5NyJ+eVXQ28jS0wA7BzpcZG2v08jaiLyIvA+aV6//QRQzj11nPZ+urbPHnlI3zq8MGMveksWPVeBc/QDQd5sYS830n8yjII2xt/GuaSaqQ4Ph9gL2wjpiI8gb2kclfvjxOihnPa9u9yMB9bKXPfow5L1Yum6+X3tySNoOuIrAqQIC1uf8DgT3DGDy/gw/YPWDblQT78YwfHzT6V9z5ZB1TDpNIh6OoKG9Vi6W1XUUKHwV7QAMx/egTmIWjDfJw3Up1h8AY2MfoKH9UEOixynXrETxl4HAu63FSqIvZNLqSEF8bNtF7fsvCQ7z6vqrEiv6bO5Yzm86kfXM/D591F+x8sRO7uX1PZ0PMgwtNdk4ZX4oKpw5IgxlXdqTH2dzB30XgqF2ntmJVaR6FFnEtm3hvhYO8hf8/8L3qB7j+HNHMHZ0QRYFLyKso4rcUFqHGdRZ0fFuul4gjjFkzgoKMbWT7tR7zzyh96NPKQKg6yqELX1WziGXQzZim20q20u3Snxo2mMEsKzKq8mhS/XAksoNA1tpGYoyP3EgTYXvy+wOPYpM5QLOpzPtqy4AK4n3Ae72pzntOIAfW5b57En557JKvnPcGGFaWOoiwTwlNdkxqfrrDVxMj1ZmAK9iLSHM8ulq95B4XMOpnqmTTNF7kPhQiIt9zTcmAPiha4AN9Ye12Q/cyN13Z26GPYCW2MPPcoxl55Emvve4GXFlebfRWFtNWIzK5wFa2lMIoC8K/A0jLadob1bsV00RyGhXSrdVrvCYjbhRmFiz1nnMPeTSjPoZPKfNkDiRftcVtsjqU7tdLBJN/hmBp2ctxAAchsmP3a7SPmXRt0dt089NgRzinfH8/Gpzewas4yqODcnhR0OiJXdV3aWOkGr5xzOd9YOhv4d8ozNhoIzwLNQ0412JtxJMWb8KJRtnmY/zhu5S91TOVszNAsF2MoX5+tKMm6YCbOaJ3zo/tPWjj4jObzr21r3e6syDxE0FFt4LMAASJzgkmN5ax+xW1Nyc4/1/54LAfzUeDXmF6YY7yc37QRi99PoDj2X804kjAEyxfoCX6KhXkrgUPpZOmkVZQy2+4RKBIXF62aefsHB0zZtnTyAzd+8N77vRD/lnYRZumk4Y/2gEjOcMrXKwdhumpUXy2FTSG93kIdhVusq0FP3T79BWuwBafgfcbqNPsPqHtg4SFz14IsAD2y+j7lOUe4Jpg0vKcRnhbgL7FkkrKiYwl4Hss57e2DIT4KtJF8wnJvoKXC+m9gWVeVYgdmXL2CuaOuoxwmBZj51g2vLBz6D+MR+SrgKRrd8pCEAGSNAwsl6FraNaWpt7bqrsfiwGcBl2JRjaSs73xsw+Li92DqQU8PVcul3vUmqglDvgF8qZfH0RNsJPnfEFWCzRT6bdvLys27bfh3HAlqxqKcChyj6IizH/y6++6fNTLmp28DshOhRSxn8ckDO7rWtk3rNeZMgkt3JnwuwbcO00tzs7Ml/Nl32t9ejP8HYFRPwU7nA+UAAAAASUVORK5CYII=" alt="한국기독교장로회 성은교회" width="169" height="42"></a>
+  <div class="utilr">
   <a class="home" href="https://sungeunch.com/" target="_top" aria-label="성은교회 홈페이지로 돌아가기">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 <path d="M3 10.5 12 3l9 7.5"/>
@@ -208,13 +297,14 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
     <button type="button" id="fs-l" data-fs="fs-l" aria-pressed="false" aria-label="글씨 크게">가</button>
     <button type="button" id="fs-xl" data-fs="fs-xl" aria-pressed="false" aria-label="글씨 아주 크게">가</button>
   </div>
-</div>
+  </div>
+</div></header>
 
-<div class="view" id="view-home" data-view="home">
+<div class="view" id="home" data-view="home">
 <header class="wrap homehead">
   <div class="cover">
     <p class="kicker">성경공부 프로젝트</p>
-    <h1 class="series">요한계시록에<br>폭싹 빠졌수다</h1>
+    <h1 class="series"><em class="hl">요한계시록에</em><br>폭싹 빠졌수다</h1>
     <p class="subtitle">오늘의 궁금증</p>
     <p class="intro">함께 읽은 본문에서 "이건 무슨 뜻이지?" 하고 궁금하셨던 것들을 날마다 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
   </div>
@@ -227,7 +317,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <main class="wrap homemain">
   <a class="feature" href="#day4" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
     <span class="ftag">새로 올라온 궁금증</span>
-    <span class="ftitle">4일차 · 요한계시록 3장 7-22절</span>
+    <span class="ftitle">4일차 · 요한계시록 3장 7‑22절</span>
     <span class="fsum">닫힌 문 앞에서는 문을 열어 주시고, 내가 닫은 문 앞에서는 지금도 두드리시는 주님이 오늘 나와 함께 밥 먹자 하십니다.</span>
     <span class="fgo">읽으러 가기 ›</span>
   </a>
@@ -238,20 +328,20 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
   <span class="rowtext"><b>요한계시록 1장</b><small>11월 2일(월) · 질문 25개</small><span class="rsum">처음부터 끝까지 나를 붙드시는 주님이, 오늘도 나와 함께 계십니다.</span></span>
   <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a><a class="row" href="#day2" style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">
   <span class="mini"><b>2</b><small>일차</small></span>
-  <span class="rowtext"><b>요한계시록 2장 1-17절</b><small>11월 3일(화) · 질문 28개</small><span class="rsum">다 아시는 주님이, 오늘 나를 처음 사랑으로 다시 부르십니다.</span></span>
+  <span class="rowtext"><b>요한계시록 2장 1‑17절</b><small>11월 3일(화) · 질문 28개</small><span class="rsum">다 아시는 주님이, 오늘 나를 처음 사랑으로 다시 부르십니다.</span></span>
   <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a><a class="row" href="#day3" style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">
   <span class="mini"><b>3</b><small>일차</small></span>
   <span class="rowtext"><b>요한계시록 2장 18절-3장 6절</b><small>11월 4일(수) · 질문 25개</small><span class="rsum">긴 밤에는 새벽 별로 오시고, 죽은 자리에서는 내 이름을 부르시는 주님이 오늘 나를 다시 살리십니다.</span></span>
   <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a><a class="row" href="#day4" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
   <span class="mini"><b>4</b><small>일차</small></span>
-  <span class="rowtext"><b>요한계시록 3장 7-22절<em class="new">NEW</em></b><small>11월 5일(목) · 질문 23개</small><span class="rsum">닫힌 문 앞에서는 문을 열어 주시고, 내가 닫은 문 앞에서는 지금도 두드리시는 주님이 오늘 나와 함께 밥 먹자 하십니다.</span></span>
+  <span class="rowtext"><b>요한계시록 3장 7‑22절<em class="new">NEW</em></b><small>11월 5일(목) · 질문 23개</small><span class="rsum">닫힌 문 앞에서는 문을 열어 주시고, 내가 닫은 문 앞에서는 지금도 두드리시는 주님이 오늘 나와 함께 밥 먹자 하십니다.</span></span>
   <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></a></div>
   </section>
   <div class="ask"><p>읽다가 더 궁금한 것이 있으면 <strong>구글폼 Q&amp;A</strong>에 남겨 주세요!</p>
   <a class="formbtn" href="https://forms.gle/s3MssGb4nLTBFV3DA" target="_blank" rel="noopener">궁금한 것 남기기</a></div>
 </main>
 </div>
-<div class="view" id="view-day1" data-view="day1" hidden style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
+<div class="view" id="day1" data-view="day1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
 <div class="bar">
   <div class="wrap barrow">
     <a class="back" href="#home">‹ 목록</a><span class="bartitle">1일차</span>
@@ -262,8 +352,9 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <div class="wrap dayhead">
   <div class="hero">
     <div class="icon"><div><b>1</b><span>일차</span></div></div>
-    <div><p class="kicker">오늘의 궁금증 · 11월 2일(월)</p><h1 class="dtitle">요한계시록 1장</h1><p class="meta">질문 25개</p></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 2일(월)</p><h1 class="dtitle">요한계시록 <em class="hl">1장</em></h1><p class="meta">질문 25개</p></div>
   </div>
+  <button type="button" class="bigbtn" data-big><b>가</b><span><strong>큰 글씨로 한 장씩 보기</strong><small>질문 하나씩, 크게 넘겨 보기</small></span><i>›</i></button>
   <p class="intro">요한계시록 1장을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
   <div class="card mapcard">
   <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle cx="76" cy="241" r="6" fill="#FF3B30"/><text class="lbl" x="86" y="245" text-anchor="start" style="fill:#D70015">에베소</text><circle cx="51" cy="163" r="6" fill="#AF52DE"/><text class="lbl" x="61" y="167" text-anchor="start" style="fill:#8944AB">서머나</text><circle cx="56" cy="49" r="6" fill="#5856D6"/><text class="lbl" x="66" y="53" text-anchor="start" style="fill:#3634A3">버가모</text><circle cx="140" cy="82" r="6" fill="#FF2D55"/><text class="lbl" x="150" y="86" text-anchor="start" style="fill:#D30F45">두아디라</text><circle cx="166" cy="152" r="6" fill="#A2845E"/><text class="lbl" x="176" y="148" text-anchor="start" style="fill:#7F6545">사데</text><circle cx="227" cy="174" r="6" fill="#FF9500"/><text class="lbl" x="227" y="203" text-anchor="middle" style="fill:#C93400">빌라델비아</text><circle cx="303" cy="257" r="6" fill="#30B0C7"/><text class="lbl" x="290" y="246" text-anchor="end" style="fill:#0071A4">라오디게아</text></svg>
@@ -431,19 +522,20 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <nav class="pager" aria-label="다른 날"><span></span><a class="pn next" href="#day2"><small>다음 ›</small><b>2일차</b><span>요한계시록 2장 1-17절</span></a></nav>
 </main>
 </div>
-<div class="view" id="view-day2" data-view="day2" hidden style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">
+<div class="view" id="day2" data-view="day2" style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">
 <div class="bar">
   <div class="wrap barrow">
     <a class="back" href="#home">‹ 목록</a><span class="bartitle">2일차</span>
     <button type="button" class="toggle-all">모두 펼치기</button>
   </div>
-  <div class="wrap chips"><button type="button" data-go="d2-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">편지를 읽는 방법</button><button type="button" data-go="d2-s2" style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">에베소 교회</button><button type="button" data-go="d2-s3" style="--c:#AF52DE;--ci:#8944AB;--cl:#DA8FFF">서머나 교회</button><button type="button" data-go="d2-s4" style="--c:#5856D6;--ci:#3634A3;--cl:#7D7AFF">버가모 교회</button><button type="button" data-go="d2-s5" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">오늘 우리에게</button></div>
+  <div class="wrap chips"><button type="button" data-go="d2-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">편지를 읽는 방법</button><button type="button" data-go="d2-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">에베소 교회</button><button type="button" data-go="d2-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">서머나 교회</button><button type="button" data-go="d2-s4" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">버가모 교회</button><button type="button" data-go="d2-s5" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">오늘 우리에게</button></div>
 </div>
 <div class="wrap dayhead">
   <div class="hero">
     <div class="icon"><div><b>2</b><span>일차</span></div></div>
-    <div><p class="kicker">오늘의 궁금증 · 11월 3일(화)</p><h1 class="dtitle">요한계시록 2장 1-17절</h1><p class="meta">질문 28개</p></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 3일(화)</p><h1 class="dtitle">요한계시록 <em class="hl">2장 1‑17절</em></h1><p class="meta">질문 28개</p></div>
   </div>
+  <button type="button" class="bigbtn" data-big><b>가</b><span><strong>큰 글씨로 한 장씩 보기</strong><small>질문 하나씩, 크게 넘겨 보기</small></span><i>›</i></button>
   <p class="intro">요한계시록 2장 1-17절을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
   <div class="card mapcard">
   <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle cx="76" cy="241" r="15" fill="#FF3B30" opacity=".18"/><circle cx="76" cy="241" r="7" fill="#FF3B30"/><text class="lbl lbl-today" x="86" y="245" text-anchor="start" style="fill:#D70015">에베소</text><circle cx="51" cy="163" r="15" fill="#AF52DE" opacity=".18"/><circle cx="51" cy="163" r="7" fill="#AF52DE"/><text class="lbl lbl-today" x="61" y="167" text-anchor="start" style="fill:#8944AB">서머나</text><circle cx="56" cy="49" r="15" fill="#5856D6" opacity=".18"/><circle cx="56" cy="49" r="7" fill="#5856D6"/><text class="lbl lbl-today" x="66" y="53" text-anchor="start" style="fill:#3634A3">버가모</text><circle class="past" cx="140" cy="82" r="5"/><text class="lbl" x="150" y="86" text-anchor="start">두아디라</text><circle class="past" cx="166" cy="152" r="5"/><text class="lbl" x="176" y="148" text-anchor="start">사데</text><circle class="past" cx="227" cy="174" r="5"/><text class="lbl" x="227" y="203" text-anchor="middle">빌라델비아</text><circle class="past" cx="303" cy="257" r="5"/><text class="lbl" x="290" y="246" text-anchor="end">라오디게아</text></svg>
@@ -470,7 +562,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <p>그리고 "교회에게"가 아니라 "교회들에게"입니다.</p>
 <p>에베소에 보낸 편지도, 서머나에 보낸 편지도, 모든 교회가 함께 들으라는 말입니다.</p>
 <p>그러니 이 세 편지는 2천 년 전 세 교회의 편지이면서, 오늘 성은교회에 온 편지입니다.</p></div></details></div>
-</section><section id="d2-s2" style="--c:#FF3B30;--ci:#D70015;--cl:#FF8A80">
+</section><section id="d2-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">2 · 2:1-7</span><h2>에베소 교회</h2></div>
   <div class="qas"><details class="qa" id="d2-q4">
 <summary><span class="qn">Q4</span><span class="qt">에베소는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -515,7 +607,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <p>그런데 요한계시록 마지막 장에 그 생명나무가 다시 나옵니다<span class="ref">(22:2, 14)</span>.</p>
 <p>예수님이 닫혔던 길을 다시 열어 주신 것입니다.</p>
 <p>성경의 처음과 끝이 이렇게 이어집니다. 잃어버렸던 영원한 생명을 예수님이 다시 주십니다.</p></div></details></div>
-</section><section id="d2-s3" style="--c:#AF52DE;--ci:#8944AB;--cl:#DA8FFF">
+</section><section id="d2-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">3 · 2:8-11</span><h2>서머나 교회</h2></div>
   <div class="qas"><details class="qa" id="d2-q11">
 <summary><span class="qn">Q11</span><span class="qt">서머나는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -563,7 +655,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <p>서머나 성도들은 첫째 사망을 당할 수도 있었습니다. 실제로 그랬습니다.</p>
 <p>그러나 주님은 약속하십니다. "이기는 자는 둘째 사망의 해를 받지 아니하리라."</p>
 <p>몸은 죽일 수 있어도, 영원한 생명은 아무도 빼앗을 수 없습니다.</p></div></details></div>
-</section><section id="d2-s4" style="--c:#5856D6;--ci:#3634A3;--cl:#7D7AFF">
+</section><section id="d2-s4" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">4 · 2:12-17</span><h2>버가모 교회</h2></div>
   <div class="qas"><details class="qa" id="d2-q19">
 <summary><span class="qn">Q19</span><span class="qt">"사탄의 권좌가 있는 데"<span class="ref">(2:13)</span>라니, 버가모는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -609,7 +701,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <p>"받는 자 밖에는 그 이름을 알 사람이 없느니라"는, 아주 가까운 사이에서만 부르는 이름처럼, 주님과 나 사이의 특별한 관계를 말합니다.</p>
 <p>예수님은 "자기 양의 이름을 각각 불러" 인도하시는 분입니다<span class="ref">(요 10:3)</span>.</p>
 <p>그리고 마지막 날 "그의 이름도 그들의 이마에 있으리라"<span class="ref">(22:4)</span>는 약속으로 이어집니다.</p></div></details></div>
-</section><section id="d2-s5" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">
+</section><section id="d2-s5" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">5</span><h2>오늘 우리에게</h2></div>
   <div class="qas"><details class="qa" id="d2-q26">
 <summary><span class="qn">Q26</span><span class="qt">"이기는 자"는 특별한 사람만 말하는 건가요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -637,19 +729,20 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <nav class="pager" aria-label="다른 날"><a class="pn" href="#day1"><small>‹ 이전</small><b>1일차</b><span>요한계시록 1장</span></a><a class="pn next" href="#day3"><small>다음 ›</small><b>3일차</b><span>요한계시록 2장 18절-3장 6절</span></a></nav>
 </main>
 </div>
-<div class="view" id="view-day3" data-view="day3" hidden style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">
+<div class="view" id="day3" data-view="day3" style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">
 <div class="bar">
   <div class="wrap barrow">
     <a class="back" href="#home">‹ 목록</a><span class="bartitle">3일차</span>
     <button type="button" class="toggle-all">모두 펼치기</button>
   </div>
-  <div class="wrap chips"><button type="button" data-go="d3-s1" style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">두아디라 교회</button><button type="button" data-go="d3-s2" style="--c:#A2845E;--ci:#7F6545;--cl:#C9AE88">사데 교회</button><button type="button" data-go="d3-s3" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">오늘 우리에게</button></div>
+  <div class="wrap chips"><button type="button" data-go="d3-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">두아디라 교회</button><button type="button" data-go="d3-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">사데 교회</button><button type="button" data-go="d3-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">오늘 우리에게</button></div>
 </div>
 <div class="wrap dayhead">
   <div class="hero">
     <div class="icon"><div><b>3</b><span>일차</span></div></div>
-    <div><p class="kicker">오늘의 궁금증 · 11월 4일(수)</p><h1 class="dtitle">요한계시록 2장 18절-3장 6절</h1><p class="meta">질문 25개</p></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 4일(수)</p><h1 class="dtitle">요한계시록 <em class="hl">2장 18절-3장 6절</em></h1><p class="meta">질문 25개</p></div>
   </div>
+  <button type="button" class="bigbtn" data-big><b>가</b><span><strong>큰 글씨로 한 장씩 보기</strong><small>질문 하나씩, 크게 넘겨 보기</small></span><i>›</i></button>
   <p class="intro">요한계시록 2장 18절-3장 6절을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
   <div class="card mapcard">
   <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle class="past" cx="76" cy="241" r="5"/><text class="lbl" x="86" y="245" text-anchor="start">에베소</text><circle class="past" cx="51" cy="163" r="5"/><text class="lbl" x="61" y="167" text-anchor="start">서머나</text><circle class="past" cx="56" cy="49" r="5"/><text class="lbl" x="66" y="53" text-anchor="start">버가모</text><circle cx="140" cy="82" r="15" fill="#FF2D55" opacity=".18"/><circle cx="140" cy="82" r="7" fill="#FF2D55"/><text class="lbl lbl-today" x="150" y="86" text-anchor="start" style="fill:#D30F45">두아디라</text><circle cx="166" cy="152" r="15" fill="#A2845E" opacity=".18"/><circle cx="166" cy="152" r="7" fill="#A2845E"/><text class="lbl lbl-today" x="176" y="148" text-anchor="start" style="fill:#7F6545">사데</text><circle class="past" cx="227" cy="174" r="5"/><text class="lbl" x="227" y="203" text-anchor="middle">빌라델비아</text><circle class="past" cx="303" cy="257" r="5"/><text class="lbl" x="290" y="246" text-anchor="end">라오디게아</text></svg>
@@ -657,7 +750,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 </div>
 </div>
 <main class="wrap daymain">
-<section id="d3-s1" style="--c:#FF2D55;--ci:#D30F45;--cl:#FF7A95">
+<section id="d3-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">1 · 2:18-29</span><h2>두아디라 교회</h2></div>
   <div class="qas"><details class="qa" id="d3-q1">
 <summary><span class="qn">Q1</span><span class="qt">두아디라는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -729,7 +822,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <p>22장 16절에서 예수님은 자신을 "광명한 새벽 별"이라고 하십니다.</p>
 <p>그러니까 새벽 별을 주신다는 것은, 긴 밤을 믿음으로 버틴 사람에게 예수님 자신을 주신다는 약속입니다.</p>
 <p>우리의 밤도 아무리 길어도 아침은 옵니다. 예수님이 새벽 별이 되어 우리를 인도하시니까요.</p></div></details></div>
-</section><section id="d3-s2" style="--c:#A2845E;--ci:#7F6545;--cl:#C9AE88">
+</section><section id="d3-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">2 · 3:1-6</span><h2>사데 교회</h2></div>
   <div class="qas"><details class="qa" id="d3-q13">
 <summary><span class="qn">Q13</span><span class="qt">사데는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -785,7 +878,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <p>예수님은 복음서에서도 같은 약속을 하셨습니다. "누구든지 사람 앞에서 나를 시인하면 나도 하늘에 계신 내 아버지 앞에서 그를 시인할 것이요"<span class="ref">(마 10:32)</span>.</p>
 <p>아무도 내 이름을 기억해 주지 않아도, 예수님이 하나님 아버지 앞에서 내 이름을 직접 불러 주십니다.</p>
 <p>세상에서 이보다 더 큰 영광은 없습니다.</p></div></details></div>
-</section><section id="d3-s3" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">
+</section><section id="d3-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">3</span><h2>오늘 우리에게</h2></div>
   <div class="qas"><details class="qa" id="d3-q23">
 <summary><span class="qn">Q23</span><span class="qt">"나는 부족해요. 아직 해결하지 못한 죄가 있어요." 그래도 흰 옷을 입을 수 있나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -812,19 +905,20 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <nav class="pager" aria-label="다른 날"><a class="pn" href="#day2"><small>‹ 이전</small><b>2일차</b><span>요한계시록 2장 1-17절</span></a><a class="pn next" href="#day4"><small>다음 ›</small><b>4일차</b><span>요한계시록 3장 7-22절</span></a></nav>
 </main>
 </div>
-<div class="view" id="view-day4" data-view="day4" hidden style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
+<div class="view" id="day4" data-view="day4" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
 <div class="bar">
   <div class="wrap barrow">
     <a class="back" href="#home">‹ 목록</a><span class="bartitle">4일차</span>
     <button type="button" class="toggle-all">모두 펼치기</button>
   </div>
-  <div class="wrap chips"><button type="button" data-go="d4-s1" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">빌라델비아 교회</button><button type="button" data-go="d4-s2" style="--c:#30B0C7;--ci:#0071A4;--cl:#7BD8E8">라오디게아 교회</button><button type="button" data-go="d4-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">일곱 편지를 마치며</button><button type="button" data-go="d4-s4" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">오늘 우리에게</button></div>
+  <div class="wrap chips"><button type="button" data-go="d4-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">빌라델비아 교회</button><button type="button" data-go="d4-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">라오디게아 교회</button><button type="button" data-go="d4-s3" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">일곱 편지를 마치며</button><button type="button" data-go="d4-s4" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">오늘 우리에게</button></div>
 </div>
 <div class="wrap dayhead">
   <div class="hero">
     <div class="icon"><div><b>4</b><span>일차</span></div></div>
-    <div><p class="kicker">오늘의 궁금증 · 11월 5일(목)</p><h1 class="dtitle">요한계시록 3장 7-22절</h1><p class="meta">질문 23개</p></div>
+    <div><p class="kicker">오늘의 궁금증 · 11월 5일(목)</p><h1 class="dtitle">요한계시록 <em class="hl">3장 7‑22절</em></h1><p class="meta">질문 23개</p></div>
   </div>
+  <button type="button" class="bigbtn" data-big><b>가</b><span><strong>큰 글씨로 한 장씩 보기</strong><small>질문 하나씩, 크게 넘겨 보기</small></span><i>›</i></button>
   <p class="intro">요한계시록 3장 7-22절을 함께 읽으며 &quot;이건 무슨 뜻이지?&quot; 하고 궁금하셨던 것들을 모았습니다. 어렵지 않게, 짧게 정리했습니다. 성경을 옆에 펴 놓고 읽어 보세요.</p>
   <div class="card mapcard">
   <svg class="map" viewBox="0 0 360 290" role="img" aria-label="소아시아 일곱 교회 위치"><polyline class="route" points="76,241 51,163 56,49 140,82 166,152 227,174 303,257"/><circle class="past" cx="76" cy="241" r="5"/><text class="lbl" x="86" y="245" text-anchor="start">에베소</text><circle class="past" cx="51" cy="163" r="5"/><text class="lbl" x="61" y="167" text-anchor="start">서머나</text><circle class="past" cx="56" cy="49" r="5"/><text class="lbl" x="66" y="53" text-anchor="start">버가모</text><circle class="past" cx="140" cy="82" r="5"/><text class="lbl" x="150" y="86" text-anchor="start">두아디라</text><circle class="past" cx="166" cy="152" r="5"/><text class="lbl" x="176" y="148" text-anchor="start">사데</text><circle cx="227" cy="174" r="15" fill="#FF9500" opacity=".18"/><circle cx="227" cy="174" r="7" fill="#FF9500"/><text class="lbl lbl-today" x="227" y="203" text-anchor="middle" style="fill:#C93400">빌라델비아</text><circle cx="303" cy="257" r="15" fill="#30B0C7" opacity=".18"/><circle cx="303" cy="257" r="7" fill="#30B0C7"/><text class="lbl lbl-today" x="290" y="246" text-anchor="end" style="fill:#0071A4">라오디게아</text></svg>
@@ -832,7 +926,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 </div>
 </div>
 <main class="wrap daymain">
-<section id="d4-s1" style="--c:#FF9500;--ci:#C93400;--cl:#FFC04D">
+<section id="d4-s1" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">1 · 3:7-13</span><h2>빌라델비아 교회</h2></div>
   <div class="qas"><details class="qa" id="d4-q1">
 <summary><span class="qn">Q1</span><span class="qt">빌라델비아는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -887,7 +981,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <p>빌라델비아는 지진 뒤에 황제의 도움으로 다시 지어지면서, 도시 이름이 황제를 따라 바뀌기도 했습니다.</p>
 <p>사람이 붙여 준 이름은 바뀌지만, 주님이 써 주시는 이름은 바뀌지 않습니다.</p>
 <p>3일차에 본 "생명책의 이름"과 이어지고, 마지막 22장 4절 "그의 이름도 그들의 이마에 있으리라"에서 이루어집니다.</p></div></details></div>
-</section><section id="d4-s2" style="--c:#30B0C7;--ci:#0071A4;--cl:#7BD8E8">
+</section><section id="d4-s2" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">2 · 3:14-22</span><h2>라오디게아 교회</h2></div>
   <div class="qas"><details class="qa" id="d4-q10">
 <summary><span class="qn">Q10</span><span class="qt">라오디게아는 어떤 도시였나요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -972,7 +1066,7 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <div class="ans"><p>일곱 편지에는 늘 같은 세 가지가 있었습니다.</p>
 <ol class="nums"><li><span>예수님이 그 교회에 꼭 필요한 모습으로 찾아오십니다. (촛대 사이를 거니시는 이, 죽었다가 살아나신 이, 다윗의 열쇠를 가지신 이, 아멘이신 이…)</span></li><li><span>"내가 안다." 수고도, 가난도, 사는 자리도, 숨긴 속마음도 다 아십니다.</span></li><li><span>"이기는 자에게는." 끝까지 주님을 붙드는 모든 사람에게 약속을 주십니다.</span></li></ol>
 <p>칭찬받은 교회도, 책망받은 교회도, 일곱 교회 모두 예수님 손안에 있었습니다<span class="ref">(1:20)</span>. 오늘 우리 교회도 그렇습니다.</p></div></details></div>
-</section><section id="d4-s4" style="--c:#34C759;--ci:#248A3D;--cl:#7EE29A">
+</section><section id="d4-s4" style="--c:#267CB9;--ci:#1D6AA5;--cl:#7DB6DE">
   <div class="sechead"><span class="secno">4</span><h2>오늘 우리에게</h2></div>
   <div class="qas"><details class="qa" id="d4-q22">
 <summary><span class="qn">Q22</span><span class="qt">오늘 결단 "말씀 한 절 먼저 읽기"는 어떻게 하면 될까요?</span><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l6 6-6 6"/></svg></summary>
@@ -988,6 +1082,15 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
 <a class="formbtn" href="https://forms.gle/s3MssGb4nLTBFV3DA" target="_blank" rel="noopener">궁금한 것 남기기</a></div>
 <nav class="pager" aria-label="다른 날"><a class="pn" href="#day3"><small>‹ 이전</small><b>3일차</b><span>요한계시록 2장 18절-3장 6절</span></a><span></span></nav>
 </main>
+</div>
+
+<div class="reader" id="reader" hidden role="dialog" aria-modal="true" aria-label="큰 글씨로 한 장씩 보기">
+  <div class="r-top">
+    <button type="button" class="r-close" id="r-close">‹ 닫기</button>
+    <div class="r-prog"><span class="r-count" id="r-count"></span><div class="r-bar"><i id="r-fill"></i></div></div>
+  </div>
+  <div class="r-body" id="r-body" aria-live="polite"></div>
+  <div class="r-nav"><button type="button" class="r-prev" id="r-prev">‹ 이전</button><button type="button" class="r-next" id="r-next">다음 질문 ›</button></div>
 </div>
 
 <footer><div class="wrap">
@@ -1015,24 +1118,116 @@ footer .wrap{padding-block:.6rem 1.6rem;font-size:.78rem;color:var(--sub);text-a
   btns.forEach(function(b){b.addEventListener('click',function(){setFs(b.dataset.fs);});});
 
   var views=document.querySelectorAll('.view');
-  function show(){
-    var h=(location.hash||'').replace('#','');
-    var target=document.querySelector('.view[data-view="'+h+'"]')||document.getElementById('view-home');
+  function viewFor(name){return document.querySelector('.view[data-view="'+name+'"]');}
+  function show(name){
+    var h=(typeof name==='string')?name:(location.hash||'').replace('#','');
+    var target=viewFor(h)||viewFor('home');
     views.forEach(function(v){v.hidden=(v!==target);});
     window.scrollTo(0,0);
   }
-  window.addEventListener('hashchange',show); show();
+  /* 휴대폰 앱 안의 미리보기 등 주소(#) 이동이 막힌 곳에서도 넘어가도록 직접 화면을 바꾼다 */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
+    var name=a.getAttribute('href').slice(1); if(!viewFor(name)) return;
+    e.preventDefault();
+    try{history.pushState(null,'','#'+name);}catch(err){}
+    show(name);
+  });
+  window.addEventListener('hashchange',function(){show();});
+  window.addEventListener('popstate',function(){show();});
+  show();
 
   document.querySelectorAll('.view').forEach(function(v){
     var tog=v.querySelector('.toggle-all'); if(!tog) return;
     var all=v.querySelectorAll('details.qa');
-    function sync(){var anyClosed=[].some.call(all,function(d){return !d.open;}); tog.textContent=anyClosed?'모두 펼치기':'모두 접기';}
-    tog.addEventListener('click',function(){var open=tog.textContent==='모두 펼치기'; all.forEach(function(d){d.open=open;}); sync();});
-    all.forEach(function(d){d.addEventListener('toggle',sync);});
+    var allMode=false; /* "모두 펼치기"를 누른 동안에는 여러 개를 함께 열어 둔다 */
+    function sync(){var anyClosed=[].some.call(all,function(d){return !d.open;}); tog.textContent=anyClosed?'모두 펼치기':'모두 접기'; if(!anyClosed) allMode=true;}
+    tog.addEventListener('click',function(){var open=tog.textContent==='모두 펼치기'; allMode=open; all.forEach(function(d){d.open=open;}); sync();});
+    all.forEach(function(d){
+      d.addEventListener('toggle',sync);
+      var s=d.querySelector('summary');
+      s.addEventListener('click',function(e){
+        if(allMode||d.open) return;           /* 닫을 때·모두 펼친 상태에서는 그대로 */
+        e.preventDefault();
+        var before=s.getBoundingClientRect().top;
+        all.forEach(function(o){ if(o!==d) o.open=false; });   /* 앞에 열린 질문은 닫고 */
+        d.open=true;
+        var after=s.getBoundingClientRect().top;               /* 누른 질문이 손가락 아래 제자리에 오도록 */
+        var root=document.documentElement, prev=root.style.scrollBehavior;
+        root.style.scrollBehavior='auto';
+        window.scrollBy(0,after-before);
+        root.style.scrollBehavior=prev;
+        sync();
+      });
+    });
     sync();
   });
   document.querySelectorAll('[data-go]').forEach(function(b){
     b.addEventListener('click',function(){var t=document.getElementById(b.dataset.go); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});});
   });
+
+  /* ===== 큰 글씨로 한 장씩 보기 ===== */
+  (function(){
+    var reader=document.getElementById('reader'), body=document.getElementById('r-body');
+    var prev=document.getElementById('r-prev'), next=document.getElementById('r-next');
+    var items=[], i=0, curView=null, lastY=0;
+    function build(view){
+      items=[];
+      view.querySelectorAll('section').forEach(function(sec){
+        var st=sec.querySelector('.sechead h2'); var secTitle=st?st.textContent:'';
+        sec.querySelectorAll('details.qa').forEach(function(d){
+          items.push({type:'q',d:d,sec:secTitle,n:d.querySelector('.qn').textContent,q:d.querySelector('.qt').innerHTML,a:d.querySelector('.ans').innerHTML});
+        });
+      });
+      var cl=view.querySelector('.closing'); if(cl) items.push({type:'end',html:cl.innerHTML});
+    }
+    function render(){
+      var it=items[i];
+      if(it.type==='q'){
+        body.innerHTML='<p class="r-sec">'+it.sec+'</p><h2 class="r-q"><span class="rn">'+it.n+'</span>'+it.q+'</h2><div class="r-a">'+it.a+'</div>';
+      } else {
+        body.innerHTML='<div class="r-end">'+it.html+'</div>';
+      }
+      body.scrollTop=0;
+      var qCount=items.filter(function(x){return x.type==='q';}).length;
+      document.getElementById('r-count').textContent= it.type==='q' ? (it.n.replace('Q','')+' / '+qCount) : '한 줄 정리';
+      document.getElementById('r-fill').style.width=Math.round((i+1)/items.length*100)+'%';
+      prev.disabled=(i===0);
+      next.textContent=(i===items.length-1)?'목록으로 ↺':(items[i+1].type==='end'?'한 줄 정리 ›':'다음 질문 ›');
+    }
+    function open(view){
+      curView=view; build(view); if(!items.length) return;
+      var start=0; items.forEach(function(x,k){ if(x.type==='q'&&x.d.open&&start===0) start=k; });
+      i=start; lastY=window.scrollY; reader.hidden=false; document.body.classList.add('reading'); render(); next.focus();
+    }
+    function close(){
+      reader.hidden=true; document.body.classList.remove('reading');
+      var it=items[i];
+      if(it&&it.type==='q'){                       /* 보던 질문을 목록에서 열어 두고 그 자리로 */
+        curView.querySelectorAll('details.qa').forEach(function(d){d.open=(d===it.d);});
+        var r=document.documentElement, p=r.style.scrollBehavior; r.style.scrollBehavior='auto';
+        it.d.scrollIntoView({block:'start'}); r.style.scrollBehavior=p;
+      } else { window.scrollTo(0,lastY); }
+    }
+    document.addEventListener('click',function(e){
+      var b=e.target.closest&&e.target.closest('[data-big]'); if(!b) return;
+      open(b.closest('.view'));
+    });
+    document.getElementById('r-close').addEventListener('click',close);
+    prev.addEventListener('click',function(){ if(i>0){i--;render();} });
+    next.addEventListener('click',function(){ if(i<items.length-1){i++;render();} else close(); });
+    document.addEventListener('keydown',function(e){
+      if(reader.hidden) return;
+      if(e.key==='Escape') close();
+      else if(e.key==='ArrowRight'){ if(i<items.length-1){i++;render();} }
+      else if(e.key==='ArrowLeft'){ if(i>0){i--;render();} }
+    });
+    var sx=null, sy=null;                          /* 옆으로 밀어서 넘기기 */
+    body.addEventListener('touchstart',function(e){var t=e.touches[0]; sx=t.clientX; sy=t.clientY;},{passive:true});
+    body.addEventListener('touchend',function(e){
+      if(sx===null) return; var t=e.changedTouches[0], dx=t.clientX-sx, dy=t.clientY-sy; sx=null;
+      if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.5){ if(dx<0&&i<items.length-1){i++;render();} else if(dx>0&&i>0){i--;render();} }
+    },{passive:true});
+  })();
 })();
 </script>
