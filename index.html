@@ -13,7 +13,7 @@
    Palette: Seongeun Church homepage sky blue on light grey, iOS-style grouped white cards. */
 :root{
   color-scheme:light;
-  --bg:#F5F6F8; --card:#FFFFFF; --ink:#212121; --sub:#666666; --hair:#E4E7EC; --fill:#EAEEF3;
+  --bg:#F7F7F7; --card:#FFFFFF; --ink:#212121; --sub:#666666; --hair:#E4E7EC; --fill:#EAEEF3;
   --brand:#267CB9; --brand-ink:#1D6AA5; --brand-soft:#E0E7F0; --brand-tint:#EFF3F8; --brand-light:#7DB6DE;
   --logo-red:#E5463F;
   --f-body:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
@@ -29,7 +29,7 @@ html.fs-xl .ans{padding-left:1.1rem}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
 body{word-break:keep-all;overflow-wrap:break-word}
 body{font-weight:700} /* 프리텐다드 7번(Bold) — 목사님 요청 */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:rgba(245,246,248,.94)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:rgba(247,247,247,.94)}
 .wrap{max-width:44rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{text-wrap:balance;margin:0}
 p{margin:0}
@@ -92,7 +92,7 @@ a{color:inherit}
 .chev{width:.9rem;height:.9rem;color:#C4C4C7;flex:none}
 
 /* ---------- Day view ---------- */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(245,246,248,.88);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:.5px solid rgba(60,60,67,.18)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(247,247,247,.9);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:.5px solid rgba(60,60,67,.18)}
 .barrow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-block:.45rem .2rem}
 .back{color:var(--brand);text-decoration:none;font-weight:600;font-size:.98rem;justify-self:start;padding:.2rem 0}
 .back:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
@@ -215,7 +215,7 @@ body::before{background:#fff}
 .series{letter-spacing:-.04em;line-height:1.28}
 .dtitle{letter-spacing:-.03em}
 .cover{background:#fff;border:1px solid var(--hair)}
-.cover::after{content:"";position:absolute;width:16rem;height:16rem;border-radius:50%;right:-6rem;top:-5rem;background:#F4F4F4;pointer-events:none} /* 홈페이지처럼 아주 연한 회색 원 */
+.cover::after{content:"";position:absolute;width:16rem;height:16rem;border-radius:50%;right:-6rem;top:-5rem;background:#EAF2FA;pointer-events:none} /* 홈페이지와 같은 아주 연한 하늘색 원 (단색) */
 .cover::before{content:"";position:absolute;width:13rem;height:13rem;border-radius:50%;left:-7rem;bottom:-8rem;border:1px solid #E6E6E6;pointer-events:none}
 .cover>*{position:relative;z-index:1}
 .subtitle{color:var(--ink)}
@@ -225,7 +225,7 @@ body::before{background:#fff}
 .icon,.mini{border-radius:50%;background:var(--brand-soft);color:var(--brand);box-shadow:none}
 .icon span,.mini small{color:var(--brand-ink)}
 .feature{background:#fff;color:var(--ink);border:1px solid var(--hair);box-shadow:0 2px 10px rgba(38,124,185,.08);position:relative;overflow:hidden}
-.feature::after{content:"";position:absolute;width:11rem;height:11rem;border-radius:50%;right:-4rem;bottom:-5rem;background:#F6F6F6;pointer-events:none}
+.feature::after{content:"";position:absolute;width:11rem;height:11rem;border-radius:50%;right:-4rem;bottom:-5rem;background:#EAF2FA;pointer-events:none}
 .feature>*{position:relative;z-index:1}
 .feature .ftag{justify-self:start;color:var(--brand-ink);background:var(--brand-tint);border-radius:999px;padding:.15rem .7rem;opacity:1}
 .feature .ftitle{color:var(--ink)}
