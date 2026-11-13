@@ -5,8 +5,8 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # UTC 00:00 = Korea 09:00. Follow-up runs retry missed publications.
-    - cron: '0,5,10,15 0 * * *'
+    # UTC 19:00 = next-day Korea 04:00; UTC 00:00 = Korea 09:00.
+    - cron: '0,5,10,15 0,19 * * *'
 
 permissions:
   contents: write
